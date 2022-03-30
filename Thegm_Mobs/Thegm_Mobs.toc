@@ -1,0 +1,6 @@
+## Interface: 40200
+## Title: |cffef7801[ Thegm ]|r Mobs
+## Author: Instable Design
+## Version: 2.4
+## Notes: Cette addon rassemble les commandes concernant les creatures (NPC,Vendeur, Boss) ranges par instances |c33333333By Instable Design|r
+TM_interface.xml

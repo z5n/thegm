@@ -1,0 +1,7 @@
+## Interface: 40200
+## Title: |cffef7801[ Thegm ]|r Teleportations
+## Author: Instable Design
+## Version: 2.4
+## Notes: Cette AddOns regroupe les commandes concernant les teleportations |c33333333By Instable Design|r
+## SavedVariables: TT_Favoris
+TT_interface.xml

@@ -1,0 +1,1198 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+  <Script file="TM_fonctions.lua" />
+  <Script file="TM_commandes.lua" />
+  <Script file="mobs\WorldBoss.lua" />
+  <Script file="mobs\Tempete.lua" />
+  <Script file="mobs\Serpent.lua" />
+  <Script file="mobs\Auchindoun.lua" />
+  <Script file="mobs\Infernal.lua" />
+  <Script file="mobs\Gruul.lua" />
+  <Script file="mobs\BlackTemple.lua" />
+  <Script file="mobs\Zulaman.lua" />
+  <Script file="mobs\Karazhan.lua" />
+  <Script file="mobs\GT.lua" />
+  <Script file="mobs\Naxxramas.lua" />
+  <Script file="mobs\BWL.lua" />
+  <Script file="mobs\AQ.lua" />
+  <Script file="mobs\MoltenCore.lua" />
+  <Script file="mobs\Onyxia.lua" />
+  <Script file="mobs\ZulGurub.lua" />
+  <Script file="mobs\Scholomance.lua" />
+  <Script file="mobs\Stratholme.lua" />
+  <Script file="mobs\HacheTripe.lua" />
+  <Script file="mobs\Rochenoire.lua" />
+  <Script file="mobs\ZulFarrak.lua" />
+  <Script file="mobs\LeTemple.lua" />
+  <Script file="mobs\Maraudon.lua" />
+  <Script file="mobs\Uldaman.lua" />
+  <Script file="mobs\Monastere.lua" />
+  <Script file="mobs\Kraal.lua" />
+  <Script file="mobs\Gnomeregan.lua" />
+  <Script file="mobs\LaPrison.lua" />
+  <Script file="mobs\Brassenoire.lua" />
+  <Script file="mobs\Ombrecroc.lua" />
+  <Script file="mobs\CaverneLam.lua" />
+  <Script file="mobs\Mortemines.lua" />
+  <Script file="mobs\Ragefeu.lua" />
+  <!-- ################################################################################################### -->
+  <!-- Template Scrollbar boutton -->
+  <Button name="TM_ScrollBar_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="285" y="16" />
+  </Size>
+  <NormalFont inherits="GameFontHighlight" justifyH="LEFT"/>
+  <Color r="1" g="0" b="0"/>
+  <Layers> <Layer level="ARTWORK">
+    <!-- Titre de la fenetre -->
+    <FontString name="$parentlvl" inherits="GameFontNormal" text="">
+      <Size>
+        <AbsDimension x="37" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="RIGHT" relativeTo="$parent" relativePoint="RIGHT">
+          <Offset>
+            <AbsDimension x="0" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1.0" g="1.0" b="1.0"/>
+    </FontString>
+    </Layer></Layers>
+  <Scripts>
+    <OnEnter>TM_TooltipScroll(getglobal(this:GetName() .. "_Value"));</OnEnter>
+    <OnMouseDown>TM_Scroll_Click(getglobal(this:GetName() .. "_Value"));</OnMouseDown>
+    <OnLeave>GameTooltip:Hide()</OnLeave>
+  </Scripts>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- Template Icone -->
+  <Button name="TM_Btn_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="30" y="30"/>
+  </Size>
+  <Layers> <Layer level="BACKGROUND">
+    <Texture name="$parent_Texture" file="interface\lfgframe\lfgicon-zone">
+      <Size>
+        <AbsDimension x="30" y="30"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP"/>
+      </Anchors>
+      <TexCoords left="0" right="0.8" top="0" bottom="0.73"/>
+    </Texture>
+    </Layer></Layers>
+  <NormalTexture/>
+  <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="30" y="30"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="$parent_Texture"/>
+    </Anchors>
+  </HighlightTexture>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <Frame name="TM_Btn" toplevel="false" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="false" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="30" y="30"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+      <Offset>
+        <AbsDimension x="185" y="-65" />
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Icone -->
+    <Texture file="interface\minimap\tooltipbackdrop-background">
+      <Size>
+        <AbsDimension x="20" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Arriere plan Haut Gauche -->
+    <Texture file="interface\minimap\minimap-trackingborder">
+      <Size>
+        <AbsDimension x="40" y="40"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="5" y="-5"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.75" top="0" bottom="0.75"/>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ################################################################################################### -->
+    <!-- Btn ouvrir la page Sorts -->
+    <Button name="TM_Open" inherits="OptionsButtonTemplate">
+    <Size>
+      <AbsDimension x="20" y="20" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+        <Offset>
+          <AbsDimension x="1" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <NormalTexture file="interface\targetingframe\ui-targetingframe-skull"/>
+    <PushedTexture file="interface\targetingframe\ui-targetingframe-skull">
+      <Anchors>
+        <Anchor point="center">
+          <Offset>
+            <AbsDimension x="0" y="-2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </PushedTexture>
+    <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+    <Scripts>
+      <OnClick>TM_OnShow();</OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["ouvrir"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  </Frame>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <!-- Frame Mobs -->
+  <Frame name="TM" toplevel="true" frameStrata="PARENT" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="612" y="512"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT">
+      <Offset>
+        <AbsDimension x="0" y="-104"/>
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <HitRectInsets>
+    <AbsInset left="0" right="30" top="0" bottom="45"/>
+  </HitRectInsets>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Titre de la fenetre -->
+    <FontString inherits="GameFontNormal" text="[ Thegm ] Mobs">
+      <Size>
+        <AbsDimension x="384" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TM" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-18" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1.0" g="1.0" b="1.0"/>
+    </FontString>
+    <!-- Arriere plan Gauche -->
+    <Texture file="interface\guildbankframe\ui-guildbankframe-left">
+      <Size>
+        <AbsDimension x="324" y="512"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.75" top="0" bottom="1"/>
+    </Texture>
+    <!-- Arriere plan Droite -->
+    <Texture file="interface\guildbankframe\ui-guildbankframe-right">
+      <Size>
+        <AbsDimension x="512" y="512"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="224" y="-11"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer><Layer level="ARTWORK">
+    <Texture name="$parent_Img" file="interface\glues\loadingscreens\loadscreenenviroment">
+      <Size>
+        <AbsDimension x="324" y="312"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="-53" y="-70"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ################################################################################################### -->
+    <!-- Btn informations -->
+    <Button name="TM_Infos" inherits="OptionsButtonTemplate" text="Informations">
+    <Size>
+      <AbsDimension x="90" y="17"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="23" y="-45" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_MobInfos();</OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["info"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Checkbox afficher ou non le resultat dans le chat -->
+    <CheckButton name="TM_CheckMobs">
+    <Size>
+      <AbsDimension x="27" y="27"/>
+    </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TM_Infos" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="20" y="5" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+	<NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+	<PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+	<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+	<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+	<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+    <Scripts>
+      <OnEnter>TM_Tooltip(TM_bul["check"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </CheckButton>
+    <!-- ################################################################################################### -->
+    <!-- SearchBox -->
+    <EditBox name="TM_SearchBox" historyLines="0" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="140" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TM_CheckMobs" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="5" y="-3" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers> <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Chercher">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- SearchBox Btn Items -->
+    <Button name="TM_SearchBtn" inherits="OptionsButtonTemplate"  text="Mob">
+    <Size>
+      <AbsDimension x="50" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TM_SearchBox" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_Msg(TM_msg["cherche"] .. TM_SearchBox:GetText());
+        TM_Search = {};
+        TM_Dire(TM_LOOKUPCREATURE  .. " " .. TM_SearchBox:GetText()); </OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["mob"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- SearchBox -->
+    <EditBox name="TM_MorphBox" letters="6" historyLines="0" numeric="true" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="90" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TM_SearchBtn" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="20" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers> <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="ID Mobs / DisplayID :">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- SearchBox Btn Items -->
+    <Button name="TM_MorphIDBtn" inherits="OptionsButtonTemplate"  text="Morph">
+    <Size>
+      <AbsDimension x="50" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TM_MorphBox" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_Msg(TM_msg["morph"] .. TM_MorphBox:GetText());
+        TM_Dire(TM_MORPH  .. " " .. TM_MorphBox:GetText()); </OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["morph"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <Button name="TM_SpawnIDBtn" inherits="OptionsButtonTemplate"  text="Spawn">
+    <Size>
+      <AbsDimension x="50" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TM_MorphIDBtn" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_Msg(TM_msg["spawn"] .. TM_MorphBox:GetText());
+        TM_Dire(TM_ADDSPW  .. " " .. TM_MorphBox:GetText()); </OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["spawn"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Defaut" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="27" y="-73"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LWorldBoss);</OnClick>
+      <OnEnter>TM_Tooltip("Divers");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Tempete" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Defaut" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LTempete);</OnClick>
+      <OnEnter>TM_Tooltip("Mechanique/Elementaire/Decor");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Serpent" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Tempete" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LSerpent);</OnClick>
+      <OnEnter>TM_Tooltip("Les moches !");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Auchindoun" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Serpent" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LAuchindoun);</OnClick>
+      <OnEnter>TM_Tooltip("Auchindoun");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Infernal" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Auchindoun" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LInfernal);</OnClick>
+      <OnEnter>TM_Tooltip("Citadelle des flammes infernales");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Gruul" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Infernal" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LGruul);</OnClick>
+      <OnEnter>TM_Tooltip("Gruul");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_BlackTemple" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Gruul" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-205" y="-35"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LBlackTemple);</OnClick>
+      <OnEnter>TM_Tooltip("Le temple Noir");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Zulaman" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_BlackTemple" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LZulaman);</OnClick>
+      <OnEnter>TM_Tooltip("Zulaman");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Karazhan" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Zulaman" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LKarazhan);</OnClick>
+      <OnEnter>TM_Tooltip("Karazhan");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_GT" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Karazhan" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LGT);</OnClick>
+      <OnEnter>TM_Tooltip("Grotte du temps");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Naxxramas" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_GT" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-135" y="-35"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LNaxxramas);</OnClick>
+      <OnEnter>TM_Tooltip("Naxxramas");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_BWL" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Naxxramas" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LBWL);</OnClick>
+      <OnEnter>TM_Tooltip("BWL");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_AQ" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_BWL" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LAQ);</OnClick>
+      <OnEnter>TM_Tooltip("Ahn Quiraj");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_MoltenCore" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_AQ" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LMoltenCore);</OnClick>
+      <OnEnter>TM_Tooltip("Coeur de Magma");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Onyxia" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_MoltenCore" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LOnyxia);</OnClick>
+      <OnEnter>TM_Tooltip("Onyxia");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_ZulGurub" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Onyxia" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LZulGurub);</OnClick>
+      <OnEnter>TM_Tooltip("Zul Gurub");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Scholomance" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ZulGurub" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-205" y="-35"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LScholomance);</OnClick>
+      <OnEnter>TM_Tooltip("Scholomance");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Stratholme" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Scholomance" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LStratholme);</OnClick>
+      <OnEnter>TM_Tooltip("Stratholme");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_HacheTripe" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Stratholme" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LHacheTripe);</OnClick>
+      <OnEnter>TM_Tooltip("HacheTripe");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Rochenoire" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_HacheTripe" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LRochenoire);</OnClick>
+      <OnEnter>TM_Tooltip("Rochenoire");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_ZulFarrak" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Rochenoire" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LZulFarrak);</OnClick>
+      <OnEnter>TM_Tooltip("ZulFarrak");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_LeTemple" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ZulFarrak" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LLeTemple);</OnClick>
+      <OnEnter>TM_Tooltip("Le Temple");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Maraudon" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_LeTemple" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-205" y="-35"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LMaraudon);</OnClick>
+      <OnEnter>TM_Tooltip("Maraudon");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Uldaman" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Maraudon" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LUldaman);</OnClick>
+      <OnEnter>TM_Tooltip("Uldaman");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Monastere" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Uldaman" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LMonastere);</OnClick>
+      <OnEnter>TM_Tooltip("Le Monastere");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Kraal" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Monastere" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LKraal);</OnClick>
+      <OnEnter>TM_Tooltip("Kraal de tranchebauge");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Gnomeregan" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Kraal" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LGnomeregan);</OnClick>
+      <OnEnter>TM_Tooltip("Gnomeregan");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_LaPrison" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Gnomeregan" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LLaPrison);</OnClick>
+      <OnEnter>TM_Tooltip("La Prison");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Brassenoire" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_LaPrison" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-205" y="-35"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LBrassenoire);</OnClick>
+      <OnEnter>TM_Tooltip("Profondeurs de Brassenoire");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Ombrecroc" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Brassenoire" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LOmbrecroc);</OnClick>
+      <OnEnter>TM_Tooltip("Donjon Ombrecroc");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_CaverneLam" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_Ombrecroc" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LCaverneLam);</OnClick>
+      <OnEnter>TM_Tooltip("Caverne des Lamentations");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_MorteMines" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_CaverneLam" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LMortemines);</OnClick>
+      <OnEnter>TM_Tooltip("Les Mortes mines");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN instance -->
+    <Button name="TM_Ragefeu" inherits="TM_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_MorteMines" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_ScrollBar_Change(TM_LRagefeu);</OnClick>
+      <OnEnter>TM_Tooltip("Gouffre de Ragefeu");</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Scrollbar -->
+    <ScrollFrame name="TM_ScrollBar" inherits="FauxScrollFrameTemplate">
+      <Size>
+        <AbsDimension x="300" y="314"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPRIGHT" relativeTo="TM" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="-75" y="-70" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Scripts>
+        <OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(15, TM_ScrollBar_Update);</OnVerticalScroll>
+        <OnShow>TM_ScrollBar_Update();</OnShow>
+      </Scripts>
+    </ScrollFrame>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar1" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="8" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar2" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar1" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar2_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar3" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar2" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar3_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar4" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar3" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar4_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar5" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar4" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar5_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar6" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar5" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar6_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar7" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar6" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar7_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar8" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar7" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar8_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar9" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar8" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar9_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar10" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar9" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar10_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar11" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar10" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar11_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar12" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar11" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar12_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar13" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar12" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar13_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar14" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar13" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar14_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar15" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar14" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar15_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar16" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar15" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar16_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar17" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar16" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar17_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar18" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar17" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar18_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- Btn Scrollbar -->
+    <Button name="TM_ScrollBar19" inherits="TM_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TM_ScrollBar18" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TM_Scroll_Click(TM_ScrollBar19_Value);</OnMouseDown>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Btn delete -->
+    <Button name="TM_Demorph" inherits="OptionsButtonTemplate" text="Demorph">
+    <Size>
+      <AbsDimension x="90" y="17"/>
+    </Size>
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT" relativeTo="TM" relativePoint="BOTTOMRIGHT">
+        <Offset>
+          <AbsDimension x="-215" y="82" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_Dire(TM_DEMORPH);</OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["demorph"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Btn delete -->
+    <Button name="TM_Delete" inherits="OptionsButtonTemplate" text="Supprimer">
+    <Size>
+      <AbsDimension x="90" y="17"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TM_Demorph" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="-4" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_Dire(TM_DELETE);</OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["del"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Btn Close Fermer -->
+    <Button inherits="UIPanelCloseButton">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TM" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-28" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    </Button>
+    <!-- Btn Fermer -->
+    <Button name="TM_Fermer" inherits="OptionsButtonTemplate" text="Fermer">
+    <Size>
+      <AbsDimension x="90" y="17"/>
+    </Size>
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT" relativeTo="TM" relativePoint="BOTTOMRIGHT">
+        <Offset>
+          <AbsDimension x="-43" y="82" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TM_OnShow();</OnClick>
+      <OnEnter>TM_Tooltip(TM_bul["fermer"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  <!-- ################################################################################################### -->
+  <!-- Frame OnLoad -->
+  <Scripts>
+    <OnLoad>TM_OnLoad();tinsert(UISpecialFrames,this:GetName());</OnLoad>
+    <OnEnter>TM_Tooltip(TM_bul["desc"]);</OnEnter>
+    <OnLeave>GameTooltip:Hide()</OnLeave>
+  </Scripts>
+  </Frame>
+</Ui>

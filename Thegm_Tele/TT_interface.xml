@@ -1,0 +1,1399 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+  <Script file="TT_fonctions.lua" />
+  <Script file="TT_commandes.lua" />
+  <Script file="tele\azeroth.lua" />
+  <Script file="tele\kalimdor.lua" />
+  <Script file="tele\outreterre.lua" />
+<!-- ################################################################################################### -->
+<!-- TemplateBtn Tele -->
+<Button name="TT_Template" virtual="true">
+<Size>
+  <AbsDimension x="12" y="12" />
+</Size>
+<NormalTexture name="$parentNorm" file="interface\gossipframe\taxigossipicon"/>
+<PushedTexture name="$parentPush" file="interface\gossipframe\taxigossipicon">
+<Size>
+  <AbsDimension x="10" y="10" />
+</Size>
+  <Anchors>
+	<Anchor point="center">
+	  <Offset>
+		<AbsDimension x="-2" y="-2"/>
+	  </Offset>
+	</Anchor>
+  </Anchors>
+</PushedTexture>
+<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+</Button>
+  <!-- ################################################################################################### -->
+  <!-- Template Btn Scroll -->
+  <Button name="TT_ScrollBtn_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="190" y="16" />
+  </Size>
+  <NormalFont inherits="GameFontHighlight" justifyH="LEFT"/>
+  <Color r="1" g="0" b="0"/>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- Template Onglet -->
+  <Button name="TT_Onglet_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="30" y="35"/>
+  </Size>
+  <Layers> <Layer level="BACKGROUND">
+    <Texture file="Interface\SpellBook\SpellBook-SkillLineTab">
+      <Size>
+        <AbsDimension x="64" y="64"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer><Layer level="ARTWORK">
+    <Texture name="$parentTexture" file="interface\lfgframe\lfgicon-easternkingdoms">
+      <Size>
+        <AbsDimension x="30" y="30"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP">
+          <Offset>
+            <AbsDimension x="4" y="-13"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.80" top="0" bottom="0.80"/>
+    </Texture>
+    </Layer></Layers>
+  <NormalTexture/>
+  <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="30" y="30"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="$parentTexture">
+        <Offset>
+          <AbsDimension x="0" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </HighlightTexture>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <Frame name="TT_Btn" toplevel="false" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="false" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="30" y="30"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+      <Offset>
+        <AbsDimension x="131" y="-65" />
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Icone -->
+    <Texture file="interface\minimap\tooltipbackdrop-background">
+      <Size>
+        <AbsDimension x="20" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Arriere plan Haut Gauche -->
+    <Texture file="interface\minimap\minimap-trackingborder">
+      <Size>
+        <AbsDimension x="40" y="40"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="5" y="-5"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.75" top="0" bottom="0.75"/>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ################################################################################################### -->
+    <!-- Btn ouvrir la page Tele -->
+    <Button name="TT_Open" inherits="OptionsButtonTemplate">
+    <Size>
+      <AbsDimension x="20" y="20" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <NormalTexture file="interface\gossipframe\taxigossipicon"/>
+    <PushedTexture file="interface\gossipframe\taxigossipicon">
+      <Anchors>
+        <Anchor point="center">
+          <Offset>
+            <AbsDimension x="-2" y="-2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </PushedTexture>
+    <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+    <Scripts>
+      <OnClick>TT_OnShow();</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["ouvrir"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  </Frame>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <!-- Frame Teleportation -->
+  <Frame name="TT" toplevel="true" frameStrata="PARENT" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="1050" y="670"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT">
+      <Offset>
+        <AbsDimension x="0" y="-104"/>
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <HitRectInsets>
+    <AbsInset left="0" right="30" top="0" bottom="45"/>
+  </HitRectInsets>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Titre de la fenetre -->
+    <FontString inherits="GameFontNormal" text="[ Thegm ] Teleportations">
+      <Size>
+        <AbsDimension x="384" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TT" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-5" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1.0" g="1.0" b="1.0"/>
+    </FontString>
+    <!-- Arriere plan Haut 1 -->
+    <Texture file="Interface\WorldMap\UI-WorldMap-Top1">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Haut 2 -->
+    <Texture file="Interface\WorldMap\UI-WorldMap-Top2">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="256" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Haut 3 -->
+    <Texture file="Interface\WorldMap\UI-WorldMap-Top3">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="512" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Haut 4 -->
+    <Texture file="Interface\WorldMap\UI-WorldMap-Top4">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="768" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Millieu 1 -->
+    <Texture file="interface\worldmap\ui-worldmap-middle1">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="0" y="-256"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Millieu 2 -->
+    <Texture file="interface\worldmap\ui-worldmap-middle2">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="256" y="-256"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Millieu 3 -->
+    <Texture file="interface\worldmap\ui-worldmap-middle3">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="512" y="-256"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Millieu 4 -->
+    <Texture file="interface\worldmap\ui-worldmap-middle4">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="768" y="-256"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas 1 -->
+    <Texture file="interface\worldmap\ui-worldmap-bottom1">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="0" y="-368"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas 2 -->
+    <Texture file="interface\worldmap\ui-worldmap-bottom2">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="256" y="-368"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas 3 -->
+    <Texture file="interface\worldmap\ui-worldmap-bottom3">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="512" y="-368"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas 4 -->
+    <Texture file="interface\worldmap\ui-worldmap-bottom4">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="768" y="-368"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ############################################### -->
+    <!-- Editbox nom tp -->
+    <EditBox name="TT_Nom" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="90" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TT" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="20" y="-90" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers> <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Nom:">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="-5" y="7"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString inherits="GameFontNormal" text="Cible:">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="40" y="-35"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <Color r="1.0" g="1.0" b="1.0"/>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- Btn nom amener -->
+    <Button name="TT_NomAmener" inherits="OptionsButtonTemplate" text="Amener">
+    <Size>
+      <AbsDimension x="55" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TT_Nom" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_Tp("amener");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["amener"]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Editbox nom tp -->
+    <Button name="TT_NomAller" inherits="OptionsButtonTemplate" text="Aller">
+    <Size>
+      <AbsDimension x="55" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TT_NomAmener" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_Tp("aller");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["aller"]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Editbox target amener -->
+    <Button name="TT_TargetAmener" inherits="OptionsButtonTemplate" text="Amener">
+    <Size>
+      <AbsDimension x="55" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TT_NomAmener" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-5" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_Tp("tamener");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["tamener"]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Editbox target aller -->
+    <Button name="TT_TargetAller" inherits="OptionsButtonTemplate" text="Aller">
+    <Size>
+      <AbsDimension x="55" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TT_NomAller" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-5" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_Tp("taller");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["taller"]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- TP groupe -->
+    <Button name="TT_MonGroupe" inherits="OptionsButtonTemplate" text="TP le Groupe">
+    <Size>
+      <AbsDimension x="110" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="20" y="-140" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_Tp("groupe");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["groupe"]); </OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- TP raid -->
+    <Button name="TT_MonRaid" inherits="OptionsButtonTemplate" text="TP le Raid">
+    <Size>
+      <AbsDimension x="85" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TT_MonGroupe" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_Tp("raid");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["raid"]); </OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Frame Azeroth -->
+    <Frame name="TT_FrameAzeroth" hidden="true">
+    <Size>
+      <AbsDimension x="800" y="600"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="230" y="-71"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Layers>
+      <!-- titre -->
+      <Layer>
+      <Texture file="interface\worldmap\azeroth\azeroth1">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth2">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth3">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth4">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth5">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth6">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth7">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth8">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth9">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth10">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth11">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\azeroth\azeroth12">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      </Layer></Layers>
+    </Frame>
+    <!-- ############################################### -->
+    <!-- Frame Kalimdor -->
+    <Frame name="TT_FrameKalimdor" hidden="true">
+    <Size>
+      <AbsDimension x="800" y="600"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="230" y="-71"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Layers>
+      <!-- titre -->
+      <Layer>
+      <Texture file="interface\worldmap\kalimdor\kalimdor1">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor2">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor3">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor4">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor5">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor6">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor7">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor8">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor9">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor10">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor11">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\kalimdor\kalimdor12">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      </Layer></Layers>
+    </Frame>
+    <!-- ############################################### -->
+    <!-- Frame Kalimdor -->
+    <Frame name="TT_FrameOutland" hidden="false">
+    <Size>
+      <AbsDimension x="800" y="600"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="230" y="-71"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Layers>
+      <!-- titre -->
+      <Layer>
+      <Texture file="interface\worldmap\expansion01\expansion011">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion012">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion013">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion014">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="0"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion015">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion016">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion017">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion018">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="-200"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion019">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="0" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion0110">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="200" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion0111">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="400" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      <Texture file="interface\worldmap\expansion01\expansion0112">
+        <Size>
+          <AbsDimension x="200" y="200"/>
+        </Size>
+        <Anchors>
+          <Anchor point="TOPLEFT">
+            <Offset>
+              <AbsDimension x="600" y="-400"/>
+            </Offset>
+          </Anchor>
+        </Anchors>
+      </Texture>
+      </Layer></Layers>
+    </Frame>
+    <!-- ############################################### -->
+    <!-- Btn add tp perso -->
+    <Button name="TT_AddpersoBtn" inherits="OptionsButtonTemplate" text="Add TP">
+    <Size>
+      <AbsDimension x="55" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="20" y="-225" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_ShowPerso();</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["add"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Editbox add tp perso -->
+    <EditBox name="TT_Addnom" hidden="true" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="90" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT" relativeTo="TT_AddpersoBtn" relativePoint="RIGHT">
+          <Offset>
+            <AbsDimension x="5" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers> <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Nom:">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="-5" y="7"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- Btn add tp perso save -->
+    <Button name="TT_Addok" hidden="true" inherits="OptionsButtonTemplate" text="Sauver">
+    <Size>
+      <AbsDimension x="55" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TT_Addnom" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+		<OnClick>TT_AddPerso();</OnClick>
+        <OnEnter>TT_Tooltip(TT_bul["add"]); </OnEnter>
+        <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Scrollbar -->
+    <ScrollFrame name="TT_ScrollBar" inherits="FauxScrollFrameTemplate" hidden="false">
+      <Size>
+        <AbsDimension x="200" y="350"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TT" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="8" y="-245" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Scripts>
+        <OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(15, TT_ScrollBar_Update);</OnVerticalScroll>
+        <OnShow>TT_ScrollBar_Update();</OnShow>
+      </Scripts>
+    </ScrollFrame>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar1" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="8" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_1,TT_ScrollBar_id_1);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar2" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar1" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_2,TT_ScrollBar_id_2);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar3" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar2" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_3,TT_ScrollBar_id_3);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar4" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar3" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_4,TT_ScrollBar_id_4);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar5" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar4" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_5,TT_ScrollBar_id_5);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar6" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar5" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_6,TT_ScrollBar_id_6);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar7" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar6" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_7,TT_ScrollBar_id_7);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar8" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar7" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_8,TT_ScrollBar_id_8);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar9" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar8" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_9,TT_ScrollBar_id_9);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar10" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar9" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_10,TT_ScrollBar_id_10);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar11" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar10" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_11,TT_ScrollBar_id_11);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar12" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar11" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_12,TT_ScrollBar_id_12);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar13" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar12" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_13,TT_ScrollBar_id_13);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar14" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar13" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_14,TT_ScrollBar_id_14);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar15" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar14" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_15,TT_ScrollBar_id_15);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar16" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar15" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_16,TT_ScrollBar_id_16);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar17" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar16" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_17,TT_ScrollBar_id_17);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar18" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar17" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_18,TT_ScrollBar_id_18);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar19" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar18" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_19,TT_ScrollBar_id_19);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar20" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar19" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_20,TT_ScrollBar_id_20);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TT_ScrollBar21" inherits="TT_ScrollBtn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TT_ScrollBar20" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_OnClick(TT_ScrollBar_go_21,TT_ScrollBar_id_21);</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["scroll"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!--Onglet azeroth -->
+    <Button name="TT_Azeroth" inherits="TT_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TT" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="0" y="-30"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_ChangeMap("TT_FrameAzeroth");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["azeroth"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Onglet Kalimdor -->
+    <Button name="TT_Kalimdor" inherits="TT_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TT" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="0" y="-80"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_ChangeMap("TT_FrameKalimdor");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["kalimdor"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!--Onglet outreterre -->
+    <Button name="TT_Outland" inherits="TT_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TT" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="0" y="-130"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TT_ChangeMap("TT_FrameOutland");</OnClick>
+      <OnEnter>TT_Tooltip(TT_bul["outreterre"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Croix Fermer -->
+    <Button inherits="UIPanelCloseButton">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TT" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-23" y="4"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    </Button>
+  </Frames>
+  <!-- ############################################### -->
+  <!-- Frame OnLoad -->
+  <Scripts>
+    <OnLoad> TT_OnLoad();
+      --Thegm_Tele_ScrollBar_OnLoad();
+      --tinsert(UISpecialFrames,this:GetName());
+	 </OnLoad>
+    <OnEnter>TT_Tooltip(TT_bul["desc"]); </OnEnter>
+    <OnLeave>GameTooltip:Hide()</OnLeave>
+  </Scripts>
+  </Frame>
+</Ui>

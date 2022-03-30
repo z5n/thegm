@@ -1,0 +1,1466 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+  <Script file="TCH_fonctions.lua" />
+  <Script file="TCH_commandes.lua" />
+  <!-- ################################################################################################### -->
+  <!-- Template Onglet -->
+  <Button name="TCh_Onglet_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="20" y="20"/>
+  </Size>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <Texture file="Interface\SpellBook\SpellBook-SkillLineTab">
+      <Size>
+        <AbsDimension x="42" y="42"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="-2" y="8"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Border -->
+    <Layer level="BORDER">
+    <Texture name="$parentTexture" file="Interface\Glues\CharacterCreate\UI-CharacterCreate-Classes">
+      <Size>
+        <AbsDimension x="20" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.25" top="0" bottom="0.25"/>
+    </Texture>
+    </Layer></Layers>
+  <NormalTexture/>
+  <!-- ############################################### -->
+  <!-- Highlight Texture -->
+  <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="20" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="$parentTexture">
+        <Offset>
+          <AbsDimension x="0" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </HighlightTexture>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- Template bouton + -->
+  <Button name="TCh_Plus_Tpl" virtual="true">
+  <NormalTexture file="Interface\Buttons\UI-PlusButton-Up">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT">
+        <Offset>
+          <AbsDimension x="3" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </NormalTexture>
+  <HighlightTexture file="Interface\Buttons\UI-PlusButton-Hilight" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT">
+        <Offset>
+          <AbsDimension x="3" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </HighlightTexture>
+  <PushedTexture file="Interface\Buttons\UI-PlusButton-Down">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT">
+        <Offset>
+          <AbsDimension x="3" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </PushedTexture>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- Template bouton - -->
+  <Button name="TCh_Moins_Tpl" virtual="true">
+  <NormalTexture file="Interface\Buttons\UI-MinusButton-Up">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT">
+        <Offset>
+          <AbsDimension x="3" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </NormalTexture>
+  <HighlightTexture file="Interface\Buttons\UI-PlusButton-Hilight" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT">
+        <Offset>
+          <AbsDimension x="3" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </HighlightTexture>
+  <PushedTexture file="Interface\Buttons\UI-MinusButton-Down">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT">
+        <Offset>
+          <AbsDimension x="3" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </PushedTexture>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <Frame name="TCh_Btn" toplevel="false" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="false" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="30" y="30"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+      <Offset>
+        <AbsDimension x="50" y="-70" />
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Image background -->
+    <Texture file="interface\minimap\tooltipbackdrop-background">
+      <Size>
+        <AbsDimension x="20" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="-1" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Image border -->
+    <Texture file="interface\minimap\minimap-trackingborder">
+      <Size>
+        <AbsDimension x="40" y="40"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="4" y="-5"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.75" top="0" bottom="0.75"/>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ############################################### -->
+    <!-- Btn ouvrir la page Sorts -->
+    <Button name="TCh_Open" inherits="OptionsButtonTemplate">
+    <Size>
+      <AbsDimension x="20" y="20" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <NormalTexture file="interface\groupframe\ui-group-leadericon"/>
+    <PushedTexture file="interface\groupframe\ui-group-leadericon">
+      <Anchors>
+        <Anchor point="center">
+          <Offset>
+            <AbsDimension x="-2" y="-2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </PushedTexture>
+    <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+    <Scripts>
+      <OnClick>TCh_OnShow();</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["ouvrir"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  </Frame>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <!-- Frame Cheat -->
+  <Frame name="TCh" toplevel="true" frameStrata="PARENT" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="384" y="512"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT">
+      <Offset>
+        <AbsDimension x="0" y="-104"/>
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <HitRectInsets>
+    <AbsInset left="0" right="30" top="0" bottom="70"/>
+  </HitRectInsets>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Icone -->
+    <Texture file="Interface\PvPRankBadges\PvPRank15">
+      <Size>
+        <AbsDimension x="58" y="58"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="10" y="-9"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Titre de la fenetre -->
+    <FontString inherits="GameFontNormal" text="[ Thegm ] Cheat">
+      <Size>
+        <AbsDimension x="384" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TCh" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-18" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1.0" g="1.0" b="1.0"/>
+    </FontString>
+    <!-- Arriere plan Haut Gauche -->
+    <Texture file="Interface\PaperDollInfoFrame\UI-Character-General-TopLeft">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Haut Droite -->
+    <Texture file="Interface\PaperDollInfoFrame\UI-Character-General-TopRight">
+      <Size>
+        <AbsDimension x="128" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas Gauche -->
+    <Texture file="Interface\PaperDollInfoFrame\SkillFrame-BotLeft">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOMLEFT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas Droite -->
+    <Texture file="Interface\PaperDollInfoFrame\SkillFrame-BotRight">
+      <Size>
+        <AbsDimension x="128" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOMRIGHT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ############################################### -->
+    <!-- GoldBox -->
+    <EditBox name="TCh_Or" historyLines="0" numeric="true" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="40" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TCh" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="35" y="-92" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ########################### -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Or :">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="-5" y="5"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <Texture file="Interface\MoneyFrame\UI-MoneyIcons">
+          <Size>
+            <AbsDimension x="13" y="13"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPRIGHT">
+              <Offset>
+                <AbsDimension x="0" y="1"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0" right="0.25" top="0" bottom="1"/>
+        </Texture>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- ArgentBox -->
+    <EditBox name="TCh_Argent" letters="2" historyLines="0" numeric="true" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="20" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TCh_Or" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="15" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ########################### -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <Texture file="Interface\MoneyFrame\UI-MoneyIcons">
+          <Size>
+            <AbsDimension x="13" y="13"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPRIGHT">
+              <Offset>
+                <AbsDimension x="0" y="1"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0.25" right="0.5" top="0" bottom="1"/>
+        </Texture>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- CuivreBox -->
+    <EditBox name="TCh_Cuivre" letters="2" historyLines="0" numeric="true" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="20" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TCh_Argent" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="15" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ########################### -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <Texture file="Interface\MoneyFrame\UI-MoneyIcons">
+          <Size>
+            <AbsDimension x="13" y="13"/>
+          </Size>
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPRIGHT">
+              <Offset>
+                <AbsDimension x="0" y="1"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+          <TexCoords left="0.5" right="0.75" top="0" bottom="1"/>
+        </Texture>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- Btn Or + -->
+    <Button name="TCh_Or_Plus" inherits="TCh_Plus_Tpl">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TCh_Cuivre" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="10" y="3" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Tune("plus");</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["orp"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Or - -->
+    <Button name="TCh_Or_Moins" inherits="TCh_Moins_Tpl">
+    <Size>
+      <AbsDimension x="16" y="16"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TCh_Or_Plus" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Tune("moins");</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["orm"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Boite Faire dire crier -->
+    <EditBox name="TCh_Say" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="90" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT" relativeTo="TCh_Cuivre" relativePoint="RIGHT">
+          <Offset>
+            <AbsDimension x="60" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers> <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Faire dire/crier :">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="-5" y="7"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- Bouton faire dire crier -->
+    <Button name="TCh_BtnSay" inherits="OptionsButtonTemplate" text="Dire">
+    <Size>
+      <AbsDimension x="40" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Say" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Crier(arg1);</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["dire"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify Box -->
+    <EditBox name="TCh_Modify" autoFocus="false" numeric="true" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="50" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT" relativeTo="TCh_Or" relativePoint="LEFT">
+          <Offset>
+            <AbsDimension x="0" y="-33" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ########################### -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Modify :">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="-5" y="7"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- Modify HP Boutton -->
+    <Button name="TCh_Modify_Lvl" inherits="OptionsButtonTemplate" text="Lvl">
+    <Size>
+      <AbsDimension x="30" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("lvl");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["modifylvl"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify HP Boutton -->
+    <Button name="TCh_Modify_Hp" inherits="OptionsButtonTemplate" text="Hp">
+    <Size>
+      <AbsDimension x="30" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify_Lvl" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("hp");</OnMouseDown>
+      >
+      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "de PV"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify Mana Boutton -->
+    <Button name="TCh_Modify_Mana" inherits="OptionsButtonTemplate" text="Mana">
+    <Size>
+      <AbsDimension x="40" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify_Hp" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("mana");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "de Mana"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify Rage Boutton -->
+    <Button name="TCh_Modify_Rage" inherits="OptionsButtonTemplate" text="Rage">
+    <Size>
+      <AbsDimension x="38" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify_Mana" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("rage")</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "de Rage"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify Energie Boutton -->
+    <Button name="TCh_Modify_Energie" inherits="OptionsButtonTemplate" text="Energie">
+    <Size>
+      <AbsDimension x="48" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify_Rage" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("energie");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "d'Energie"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify Boutton -->
+    <Button name="TCh_Modify_Honneur" inherits="OptionsButtonTemplate" text="Honneur">
+    <Size>
+      <AbsDimension x="58" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify_Energie" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("honneur");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["modifyhonneur"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify Boutton -->
+    <Button name="TCh_Modify_Taille" inherits="OptionsButtonTemplate" text="Taille">
+    <Size>
+      <AbsDimension x="40" y="20"/>
+    </Size>
+    <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TCh_Modify" relativePoint="BOTTOMLEFT">
+          <Offset>
+            <AbsDimension x="0" y="-20" />
+          </Offset>
+        </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("taille");</OnMouseDown>
+      <OnEnter> TCh_Tooltip(TCh_bul["modifyscale"]);
+        Tch_Echelle("t"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Modify Slider -->
+    <Slider name="TCh_Modify_Slider" inherits="OptionsSliderTemplate">
+      <Size>
+        <AbsDimension x="170" y="15" />
+      </Size>
+      <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify_Taille" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ########################### -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Modify :">
+          <Anchors>
+            <Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+              <Offset>
+                <AbsDimension x="0" y="12"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+      <NormalText inherits="GameFontWhite"/>
+    </Slider>
+    <!-- ############################################### -->
+    <!-- Modify Boutton -->
+    <Button name="TCh_Modify_Allspeed" inherits="OptionsButtonTemplate" text="Speed">
+    <Size>
+      <AbsDimension x="40" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify_Slider" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Modify_Val("speed");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["modifyspeed"]);
+        Tch_Echelle("s"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_GM" inherits="OptionsButtonTemplate" text="GM">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Modify" relativePoint="LEFT">
+        <Offset>
+          <AbsDimension x="20" y="-80" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_GM_Mode();</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["GM"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Hover" inherits="OptionsButtonTemplate" text="Hover">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_GM" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Activer("hover");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["hover"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Invisible" inherits="OptionsButtonTemplate" text="Invisible">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Hover" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Activer("invisible");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["invisible"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Bank" inherits="OptionsButtonTemplate" text="Bank">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Invisible" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["bank"]);TCh_Dire(TCH_BANK);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["bank"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_GMList" inherits="OptionsButtonTemplate" text="GM List">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TCh_GM" relativePoint="BOTTOMLEFT">
+        <Offset>
+          <AbsDimension x="0" y="-5" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["GMlist"]);TCh_Dire(TCH_GM_LIST);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["GMlist"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_FlyPath" inherits="OptionsButtonTemplate" text="Fly Path">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_GMList" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Activer("flypath");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["flypath"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_FlyMode" inherits="OptionsButtonTemplate" text="Fly Mode">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_FlyPath" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Activer("flymode");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["flymode"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Carte" inherits="OptionsButtonTemplate" text="Carte">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_FlyMode" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Activer("carte");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["carte"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Tuer" inherits="OptionsButtonTemplate" text="Tuer">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TCh_GMList" relativePoint="BOTTOMLEFT">
+        <Offset>
+          <AbsDimension x="30" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Activer("tuer");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["tuer"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Kick" inherits="OptionsButtonTemplate" text="Kick">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Tuer" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["kick"] .. TCh_TName());TCh_Dire(TCH_KICK);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["kick"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Acct" inherits="OptionsButtonTemplate" text="Acct">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Kick" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["acct"] .. TCh_TName());TCh_Dire(TCH_ACCT);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["acct"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_GPS" inherits="OptionsButtonTemplate" text="GPS">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TCh_Tuer" relativePoint="BOTTOMLEFT">
+        <Offset>
+          <AbsDimension x="0" y="-5" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["gps"]);TCh_Dire(TCH_GPS);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["gps"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Infos" inherits="OptionsButtonTemplate" text="Infos">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_GPS" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["infos"]);TCh_Dire(TCH_INFOS);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["infos"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_InfosCible" inherits="OptionsButtonTemplate" text="Info cible">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Infos" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Infoscible();</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["infoscible"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Soleil" inherits="OptionsButtonTemplate" text="Soleil">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TCh_GPS" relativePoint="BOTTOMLEFT">
+        <Offset>
+          <AbsDimension x="-30" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["soleil"]);TCh_Dire(TCH_SOLEIL);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["soleil"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_CielGris" inherits="OptionsButtonTemplate" text="Ciel gris">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Soleil" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["cielgris"]);TCh_Dire(TCH_GRIS);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["cielgris"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Pluie" inherits="OptionsButtonTemplate" text="Pluie">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_CielGris" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["pluie"]);TCh_Dire(TCH_PLUIE);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["pluie"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- GM Boutton -->
+    <Button name="TCh_Neige" inherits="OptionsButtonTemplate" text="Neige">
+    <Size>
+      <AbsDimension x="60" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Pluie" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_Msg(TCh_msg["neige"]);TCh_Dire(TCH_NEIGE);</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["neige"]);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Annonces -->
+    <EditBox name="TCh_Annonce" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="90" y="10"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOM" relativeTo="TCh" relativePoint="BOTTOM">
+          <Offset>
+            <AbsDimension x="-15" y="85" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers> <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Annonce/notify :">
+          <Anchors>
+            <Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT">
+              <Offset>
+                <AbsDimension x="-5" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- Btn Annonces Ok -->
+    <Button name="TCh_AnnonceBtn" inherits="OptionsButtonTemplate" text="Ok">
+    <Size>
+      <AbsDimension x="30" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TCh_Annonce" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Annoncer();</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["annonce"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro1" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TCh" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-11" y="-38"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MGuerrier");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Guerrier"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro2" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro1" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MMage");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Mage"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro3" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro2" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MVoleur");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Voleur"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro4" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro3" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MDruid");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Druid"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro5" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro4" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MChasseur");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Chasseur"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro6" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro5" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MChaman");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Chaman"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro7" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro6" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MPretre");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Pretre"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro8" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro7" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MDemoniste");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Demoniste"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- Onglets Macro -->
+    <Button name="TCh_Macro9" inherits="TCh_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TCh_Macro8" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-12"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TCh_Macro_Click("TCh_MPaladin");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["macro"] .. "Paladin"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Boutton Fermer -->
+    <Button inherits="OptionsButtonTemplate" text="Fermer">
+    <Size>
+      <AbsDimension x="80" y="23"/>
+    </Size>
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT" relativeTo="TCh" relativePoint="BOTTOMRIGHT">
+        <Offset>
+          <AbsDimension x="-40" y="78" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_OnShow();</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["fermer"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Boutton Close -->
+    <Button inherits="UIPanelCloseButton">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TCh" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-28" y="-9"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    </Button>
+  </Frames>
+  <!-- ################################################################################################### -->
+  <!-- Frame OnLoad -->
+  <Scripts>
+    <OnLoad>TCh_OnLoad();tinsert(UISpecialFrames,this:GetName());</OnLoad>
+    <OnEnter>TCh_Tooltip("Cette page rassemble les principales commandes de GM"); </OnEnter>
+    <OnLeave>GameTooltip:Hide()</OnLeave>
+  </Scripts>
+  </Frame>
+  <!-- ################################################################################################### -->
+  <!-- Frame Macro -->
+  <Frame name="TCh_Macro" toplevel="false" frameStrata="DIALOG" hidden="true" parent="UIParent">
+  <Size>
+    <AbsDimension x="270" y="300" />
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT" relativeTo="TCh_Macro1" relativePoint="TOPRIGHT">
+      <Offset>
+        <AbsDimension x="0" y="0" />
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+    <BackgroundInsets>
+      <AbsInset left="11" right="12" top="12" bottom="11" />
+    </BackgroundInsets>
+    <TileSize>
+      <AbsValue val="32" />
+    </TileSize>
+    <EdgeSize>
+      <AbsValue val="32" />
+    </EdgeSize>
+  </Backdrop>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="ARTWORK">
+    <!-- Texte bienvenue -->
+    <FontString inherits="GameFontNormalSmall" text="Macro de bienvenue :">
+      <Anchors>
+        <Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-15"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </FontString>
+    <!-- Texte onclick -->
+    <FontString inherits="GameFontNormalSmall" text="Action en clic:">
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="40" y="-28"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </FontString>
+    <!-- Texte onclick droit -->
+    <FontString inherits="GameFontNormalSmall" text="Action en clic droit:">
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="40" y="-145"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </FontString>
+    <!-- Icone fenetre -->
+    <Texture name="$parentIcone" file="interface\icons\inv_misc_questionmark">
+      <Size>
+        <AbsDimension x="30" y="30"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TCh_Macro" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="10" y="-10"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ############################################### -->
+    <!-- Scrollframe on click -->
+    <ScrollFrame name="TCh_Macro_Scroll1" inherits="UIPanelScrollFrameTemplate">
+      <Size>
+        <AbsDimension x="200" y="85"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TCh_Macro" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="20" y="-50"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <!-- ############################### -->
+      <!-- Background scrollframe -->
+      <Backdrop bgFile="interface\paperdollinfoframe\ui-character-statbackground">
+        <BackgroundInsets>
+          <AbsInset left="-7" right="-55" top="-7" bottom="-70"/>
+        </BackgroundInsets>
+      </Backdrop>
+      <ScrollChild>
+        <!-- ############################### -->
+        <!-- editbox on click -->
+        <EditBox name="$parentTxt" multiLine="true" autoFocus="false">
+          <Size>
+            <AbsDimension x="200" y="85"/>
+          </Size>
+          <Scripts>
+            <OnEscapePressed> this:ClearFocus(); </OnEscapePressed>
+          </Scripts>
+          <FontString inherits="GameFontHighlightSmall"/>
+        </EditBox>
+      </ScrollChild>
+    </ScrollFrame>
+    <!-- ############################################### -->
+    <!-- Scrollframe on click droit -->
+    <ScrollFrame name="TCh_Macro_Scroll2" inherits="UIPanelScrollFrameTemplate">
+      <Size>
+        <AbsDimension x="200" y="85"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TCh_Macro_Scroll1" relativePoint="BOTTOM">
+          <Offset>
+            <AbsDimension x="0" y="-30"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <!-- ############################### -->
+      <!-- Background scrollframe -->
+      <Backdrop bgFile="interface\paperdollinfoframe\ui-character-statbackground">
+        <BackgroundInsets>
+          <AbsInset left="-7" right="-55" top="-7" bottom="-70"/>
+        </BackgroundInsets>
+      </Backdrop>
+      <ScrollChild>
+        <!-- ############################### -->
+        <!-- editbox on click droit -->
+        <EditBox name="$parentTxt" multiLine="true" autoFocus="false">
+          <Size>
+            <AbsDimension x="200" y="85"/>
+          </Size>
+          <Scripts>
+            <OnEscapePressed> this:ClearFocus(); </OnEscapePressed>
+          </Scripts>
+          <FontString inherits="GameFontHighlightSmall"/>
+        </EditBox>
+      </ScrollChild>
+    </ScrollFrame>
+    <!-- ############################################### -->
+    <!-- Scrollframe on click droit -->
+    <Button name="TCh_Macro_Save" inherits="OptionsButtonTemplate" text="Sauvegarder">
+    <Size>
+      <AbsDimension x="90" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT" relativeTo="TCh_Macro" relativePoint="BOTTOMRIGHT">
+        <Offset>
+          <AbsDimension x="-20" y="15" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TCh_MacroSave(TCh_MacroRec);TCh_Macro:Hide();</OnClick>
+      <OnEnter>TCh_Tooltip("Cliquez pour sauvegardez la macro"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  <!-- ################################################################################################### -->
+  <!-- Frame OnLoad -->
+  <Scripts>
+    <OnEnter>TCh_Tooltip("Configurer les macros par classes"); </OnEnter>
+    <OnLeave>GameTooltip:Hide();</OnLeave>
+  </Scripts>
+  </Frame>
+</Ui>

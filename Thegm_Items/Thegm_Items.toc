@@ -1,0 +1,6 @@
+## Interface: 40200
+## Title: |cffef7801[ Thegm ]|r Items
+## Author: Instable Design
+## Version: 2.4
+## Notes: [ Thegm ] Item regroupe les commandes concernant les objets et stuff |c33333333By Instable Design|r
+TI_interface.xml

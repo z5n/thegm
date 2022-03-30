@@ -1,0 +1,976 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+  <Script file="TI_fonctions.lua" />
+  <Script file="TI_commandes.lua" />
+  <Script file="items\armes.lua" />
+  <Script file="items\voleur.lua" />
+  <!-- ################################################################################################### -->
+  <!-- Template Btn Scroll items -->
+  <Button name="TI_ScrollBar_Tpl" hidden="false" virtual="true">
+  <Size>
+    <AbsDimension x="550" y="37"/>
+  </Size>
+  <Layers> <Layer level="BACKGROUND">
+    <FontString name="$parent_Nom" inherits="GameFontNormal" justifyH="LEFT" text="??? Nom de l'objet ???">
+      <Size>
+        <AbsDimension x="260" y="28"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="43" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </FontString>
+    <FontString name="$parent_Type" inherits="GameFontHighlightSmall" text="?? Type ??">
+      <Size>
+        <AbsDimension x="115" y="28"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="279" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </FontString>
+    <FontString name="$parent_LvlObjets" inherits="GameFontHighlightSmall" text="?? Niveau ??">
+      <Size>
+        <AbsDimension x="104" y="28"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="379" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </FontString>
+    <Texture name="$parentLeft" file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+      <Size>
+        <AbsDimension x="10" y="32"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT">
+          <Offset>
+            <AbsDimension x="34" y="2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.078125" top="0" bottom="1.0"/>
+    </Texture>
+    <Texture name="$parentRight" file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+      <Size>
+        <AbsDimension x="10" y="32"/>
+      </Size>
+      <Anchors>
+        <Anchor point="RIGHT">
+          <Offset>
+            <AbsDimension x="0" y="2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0.75" right="0.828125" top="0" bottom="1.0"/>
+    </Texture>
+    <Texture file="Interface\AuctionFrame\UI-AuctionItemNameFrame">
+      <Size>
+        <AbsDimension x="10" y="32"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+        <Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0.078125" right="0.75" top="0" bottom="1.0"/>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <Button name="$parentItem">
+    <Size>
+      <AbsDimension x="32" y="32"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT">
+        <Offset>
+          <AbsDimension x="0" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+      <Size>
+        <AbsDimension x="32" y="32"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </NormalTexture>
+    <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+    </Button>
+  </Frames>
+  <HighlightTexture name="$parentHighlight" file="Interface\HelpFrame\HelpFrameButton-Highlight" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="515" y="32"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT">
+        <Offset>
+          <AbsDimension x="33" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <TexCoords left="0" right="1.0" top="0" bottom="0.578125"/>
+  </HighlightTexture>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- Template Btn section HV -->
+  <Button name="TI_ButtonTpl" virtual="true">
+  <Size>
+    <AbsDimension x="136" y="20"/>
+  </Size>
+  <Layers> <Layer level="BACKGROUND">
+    <Texture name="$parentLines" file="Interface\AuctionFrame\UI-AuctionFrame-FilterLines">
+      <Size>
+        <AbsDimension x="7" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT">
+          <Offset>
+            <AbsDimension x="13" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.4375" top="0" bottom="0.625"/>
+    </Texture>
+    </Layer></Layers>
+  <NormalTexture file="Interface\AuctionFrame\UI-AuctionFrame-FilterBg">
+    <TexCoords left="0" right="0.53125" top="0" bottom="0.625"/>
+  </NormalTexture>
+  <HighlightTexture file="Interface\PaperDollInfoFrame\UI-Character-Tab-Highlight" alphaMode="ADD"/>
+  <ButtonText name="$parentNormalText">
+    <Size>
+      <AbsDimension x="115" y="8"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT">
+        <Offset>
+          <AbsDimension x="4" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </ButtonText>
+  <NormalFont inherits="GameFontNormalSmall" justifyH="LEFT"/>
+  <HighlightFont inherits="GameFontHighlightSmall" justifyH="LEFT"/>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <Frame name="TI_Btn" toplevel="false" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="false" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="30" y="30"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+      <Offset>
+        <AbsDimension x="160" y="-65" />
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Image background -->
+    <Texture file="interface\minimap\tooltipbackdrop-background">
+      <Size>
+        <AbsDimension x="20" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="-1" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Image border -->
+    <Texture file="interface\minimap\minimap-trackingborder">
+      <Size>
+        <AbsDimension x="40" y="40"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="4" y="-5"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.75" top="0" bottom="0.75"/>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ############################################### -->
+    <!-- Btn ouvrir la page Sorts -->
+    <Button name="TI_Open" inherits="OptionsButtonTemplate">
+    <Size>
+      <AbsDimension x="20" y="20" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <NormalTexture file="interface\gossipframe\battlemastergossipicon"/>
+    <PushedTexture file="interface\gossipframe\battlemastergossipicon">
+      <Anchors>
+        <Anchor point="center">
+          <Offset>
+            <AbsDimension x="-2" y="-2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </PushedTexture>
+    <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+    <Scripts>
+      <OnClick>TI_OnShow();</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["ouvrir"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  </Frame>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <!-- Frame Items -->
+  <Frame name="TI" toplevel="true" frameStrata="PARENT" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="800" y="512"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT">
+      <Offset>
+        <AbsDimension x="0" y="-104"/>
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <HitRectInsets>
+    <AbsInset left="0" right="30" top="0" bottom="45"/>
+  </HitRectInsets>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Icone -->
+    <Texture file="interface\icons\ability_dualwield">
+      <Size>
+        <AbsDimension x="58" y="58"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="13" y="-9"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Titre de la fenetre -->
+    <FontString inherits="GameFontNormal" text="[ Thegm ] Items">
+      <Size>
+        <AbsDimension x="384" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TI" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-18" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1.0" g="1.0" b="1.0"/>
+    </FontString>
+    <!-- Titre de la fenetre -->
+    <FontString inherits="GameFontNormal" justifyH="LEFT" text="|cffffffffClic:|rAjout objet |cffffffffClic droit:|rSupprime l'objet |cffffffffCtrl+Clic:|rDire l'ID">
+      <Size>
+        <AbsDimension x="500" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TI" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-78" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1" g="0.8196079" b="0" />
+    </FontString>
+    <!-- Titre de la fenetre -->
+    <FontString inherits="GameFontNormal" justifyH="LEFT" text="|cffffffffShift+Clic :|rCombien d'objet|cffffffffCtrl+Clic droit :|rListe l'objet">
+      <Size>
+        <AbsDimension x="500" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TI" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-90" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1" g="0.8196079" b="0" />
+    </FontString>
+    <!-- Arriere plan Haut Gauche -->
+    <Texture file="interface\auctionframe\ui-auctionframe-browse-topleft">
+      <Size>
+        <AbsDimension x="281" y="269"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Haut -->
+    <Texture file="interface\auctionframe\ui-auctionframe-browse-top">
+      <Size>
+        <AbsDimension x="222" y="269"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP">
+          <Offset>
+            <AbsDimension x="-6" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Haut Droite -->
+    <Texture file="interface\auctionframe\ui-auctionframe-browse-topright">
+      <Size>
+        <AbsDimension x="296" y="269"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="0" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas Gauche -->
+    <Texture file="interface\auctionframe\ui-auctionframe-browse-botleft">
+      <Size>
+        <AbsDimension x="281" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOMLEFT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas -->
+    <Texture file="interface\auctionframe\ui-auctionframe-browse-bot">
+      <Size>
+        <AbsDimension x="222" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOM">
+          <Offset>
+            <AbsDimension x="-6" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas droite -->
+    <Texture file="interface\auctionframe\ui-auctionframe-browse-botright">
+      <Size>
+        <AbsDimension x="296" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOMRIGHT">
+          <Offset>
+            <AbsDimension x="0" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ############################################### -->
+    <!-- Checkbox afficher ou non le resultat dans le chat -->
+    <CheckButton name="TI_CheckItems">
+    <Size>
+      <AbsDimension x="27" y="27"/>
+    </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TI" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="90" y="-50" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+	<NormalTexture file="Interface\Buttons\UI-CheckBox-Up" />
+	<PushedTexture file="Interface\Buttons\UI-CheckBox-Down" />
+	<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD" />
+	<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check" />
+	<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled" />
+    <Scripts>
+      <OnEnter>TI_Tooltip(TI_bul["check"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </CheckButton>
+    <!-- ############################################### -->
+    <!-- SearchBox -->
+    <EditBox name="TI_SearchBox" historyLines="0" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="140" y="25"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT" relativeTo="TI_CheckItems" relativePoint="RIGHT">
+          <Offset>
+            <AbsDimension x="0" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ################################ -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Chercher">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="-15" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- SearchBox Btn Items -->
+    <Button name="TI_Search_ItemsBtn" inherits="OptionsButtonTemplate"  text="Items">
+    <Size>
+      <AbsDimension x="50" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TI_SearchBox" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_Chercher("items");</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["chercheo"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- SearchBox Btn Stuff -->
+    <Button name="TI_Search_StuffBtn" inherits="OptionsButtonTemplate"  text="Stuff">
+    <Size>
+      <AbsDimension x="50" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TI_Search_ItemsBtn" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_Chercher("stuff");</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["cherches"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- AddBox -->
+    <EditBox name="TI_Add" historyLines="0" numeric="true" autoFocus="false" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="120" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TI_Search_StuffBtn" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="30" y="0" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ################################ -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Ajouter un objets ou stuff par ID:">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- AddBtn Items -->
+    <Button name="TI_Add_ItemsBtn" inherits="OptionsButtonTemplate"  text="Items">
+    <Size>
+      <AbsDimension x="50" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TI_Add" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_Ajout("items");</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["addo"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- AddBtn Stuff -->
+    <Button name="TI_Add_StuffBtn" inherits="OptionsButtonTemplate"  text="Stuff">
+    <Size>
+      <AbsDimension x="50" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativeTo="TI_Add_ItemsBtn" relativePoint="RIGHT">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_Ajout("stuff");</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["adds"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Composants -->
+    <Button name="TI_Composants" inherits="TI_ButtonTpl" text="Composants/Objets">
+    <Size>
+      <AbsDimension x="175" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="25" y="-110" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_ScrollBar_Change(TI_LComposants);</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["composants"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Armes -->
+    <Button name="TI_Armes" inherits="TI_ButtonTpl" text="Armes">
+    <Size>
+      <AbsDimension x="175" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TI_Composants" relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_ScrollBar_Change(TI_LArmes); </OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["armes"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Armes -->
+    <Button name="TI_Sacs" inherits="TI_ButtonTpl" text="Sacs">
+    <Size>
+      <AbsDimension x="175" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TI_Armes" relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_ScrollBar_Change(TI_LSacs); </OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["sacs"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Stuff -->
+    <Button name="TI_Stuff" inherits="TI_ButtonTpl" text="Stuff">
+    <Size>
+      <AbsDimension x="175" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TI_Sacs" relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_ScrollBar_Change(TI_LStuff);TI_Value = "stuff";</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["stuff"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Montures -->
+    <Button name="TI_Montures" inherits="TI_ButtonTpl" text="Montures">
+    <Size>
+      <AbsDimension x="175" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TI_Stuff" relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_ScrollBar_Change(TI_LMontures); </OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["montures"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Minipet -->
+    <Button name="TI_Minipet" inherits="TI_ButtonTpl" text="Mini Pet">
+    <Size>
+      <AbsDimension x="175" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TI_Montures" relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_ScrollBar_Change(TI_LMinipet); </OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["minipet"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Plans -->
+    <Button name="TI_Plans" inherits="TI_ButtonTpl" text="Plans">
+    <Size>
+      <AbsDimension x="175" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TI_Minipet" relativePoint="TOP">
+        <Offset>
+          <AbsDimension x="0" y="-20" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_ScrollBar_Change(TI_LPlans); </OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["plans"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Scrollbar -->
+    <ScrollFrame name="TI_ScrollBar" inherits="FauxScrollFrameTemplate" hidden="true">
+      <Size>
+        <AbsDimension x="560" y="300"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPRIGHT" relativeTo="TI" relativePoint="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="-35" y="-110" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Scripts>
+        <OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(16, TI_ScrollBar_Update);</OnVerticalScroll>
+        <OnShow>TI_ScrollBar_Update();</OnShow>
+      </Scripts>
+    </ScrollFrame>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar1" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="8" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_1);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_1);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar2" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar1" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_2);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_2);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar3" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar2" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_3);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_3);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar4" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar3" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_4);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_4);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar5" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar4" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_5);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_5);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar6" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar5" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_6);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_6);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar7" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar6" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_7);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_7);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Scrollbar -->
+    <Button name="TI_ScrollBar8" inherits="TI_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TI_ScrollBar7" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TI_OnClick(TI_ScrollBar_Value_8);</OnMouseDown>
+      <OnEnter>TI_Infosbulles(TI_ScrollBar_Value_8);</OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Stuff MJ -->
+    <Button name="TI_StuffMJ" inherits="OptionsButtonTemplate" text="Stuff MJ">
+    <Size>
+      <AbsDimension x="190" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT" relativeTo="TI" relativePoint="BOTTOMRIGHT">
+        <Offset>
+          <AbsDimension x="-98" y="79" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_StuffMJ_OnClick(); </OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["mj"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Close Fermer -->
+    <Button inherits="UIPanelCloseButton">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TI" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="1" y="-10"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Btn Fermer -->
+    <Button inherits="OptionsButtonTemplate" text="Fermer">
+    <Size>
+      <AbsDimension x="90" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="BOTTOMRIGHT" relativeTo="TI" relativePoint="BOTTOMRIGHT">
+        <Offset>
+          <AbsDimension x="-10" y="79" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_OnShow();</OnClick>
+      <OnEnter>TI_Tooltip(TI_bul["fermer"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  <!-- ################################################################################################### -->
+  <!-- Frame OnLoad -->
+  <Scripts>
+	<OnLoad>TI_ScrollBar_Change(TI_LComposants);tinsert(UISpecialFrames,this:GetName());</OnLoad>
+    <OnEnter>TI_Tooltip(TI_bul["desc"]);</OnEnter>
+    <OnLeave>GameTooltip:Hide();</OnLeave>
+  </Scripts>
+  </Frame>
+  <!-- ################################################################################################### -->
+  <!-- Frame Split -->
+  <Frame name="TI_Split" frameStrata="HIGH" parent="UIParent" toplevel="true" hidden="true">
+  <Size>
+    <AbsDimension x="172" y="96"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT" relativeTo="TI" relativePoint="TOPRIGHT">
+      <Offset>
+        <AbsDimension x="0" y="0" />
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <Texture file="Interface\MoneyFrame\UI-MoneyFrame">
+      <Size>
+        <AbsDimension x="256" y="32"/>
+      </Size>
+      <TexCoords left="0" right="0.671875" top="0" bottom="0.75"/>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ############################################### -->
+    <!-- SearchBox -->
+    <EditBox name="TI_SplitBox" numeric="true" autoFocus="true" inherits="InputBoxTemplate">
+      <Size>
+        <AbsDimension x="100" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TI_Split" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="43" y="-18" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Layers>
+        <!-- ############################################### -->
+        <!-- Layer Background -->
+        <Layer level="BACKGROUND">
+        <FontString inherits="GameFontNormalSmall" text="Quantitee:">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="0" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        </Layer></Layers>
+    </EditBox>
+    <!-- ############################################### -->
+    <!-- ok Btn -->
+    <Button name="TI_Split_OkayButton" inherits="UIPanelButtonTemplate" text="OK">
+    <Size>
+      <AbsDimension x="64" y="24"/>
+    </Size>
+    <Anchors>
+      <Anchor point="RIGHT" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="-3" y="32"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_AjoutM();</OnClick>
+	  <OnEnter>TI_Tooltip(TI_bul["split"]);</OnEnter>
+	  <OnLeave>GameTooltip:Hide();</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- cancel Btn -->
+    <Button name="TI_Split_CancelButton" inherits="UIPanelButtonTemplate" text="CANCEL">
+    <Size>
+      <AbsDimension x="64" y="24"/>
+    </Size>
+    <Anchors>
+      <Anchor point="LEFT" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="5" y="32"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TI_Hide();</OnClick>
+	  <OnEnter>TI_Tooltip(TI_bul["splitf"]);</OnEnter>
+	  <OnLeave>GameTooltip:Hide();</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  </Frame>
+</Ui>

@@ -1,0 +1,7 @@
+## Interface: 40200
+## Title: |cffef7801[ Thegm ]|r Cheat
+## Author: Instable Design
+## Version: 2.4
+## Notes: Cette AddOns regroupe les commandes de cheat |c33333333By Instable Design|r
+## SavedVariables: TCh_MGuerrier, TCh_MMage, TCh_MVoleur, TCh_MDruid, TCh_MChasseur, TCh_MChaman, TCh_MPretre, TCh_MDemoniste, TCh_MPaladin
+TCh_interface.xml

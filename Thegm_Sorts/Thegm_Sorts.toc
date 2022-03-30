@@ -1,0 +1,6 @@
+## Interface: 40200
+## Title: |cffef7801[ Thegm ]|r Sorts
+## Author: Instable Design
+## Version: 2.4
+## Notes: Cette addon rassemble tous les sorts (tous les rangs) ranges par class |c33333333By Instable Design|r
+TS_interface.xml
