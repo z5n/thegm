@@ -344,7 +344,7 @@
         <!-- ########################### -->
         <!-- Layer Background -->
         <Layer level="BACKGROUND">
-        <FontString inherits="GameFontNormalSmall" text="Or :">
+        <FontString inherits="GameFontNormalSmall" text="Or:">
           <Anchors>
             <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
               <Offset>
@@ -484,7 +484,7 @@
         </Anchor>
       </Anchors>
       <Layers> <Layer level="BACKGROUND">
-        <FontString inherits="GameFontNormalSmall" text="Faire dire/crier :">
+        <FontString inherits="GameFontNormalSmall" text="NPC say/yell:">
           <Anchors>
             <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
               <Offset>
@@ -531,7 +531,7 @@
         <!-- ########################### -->
         <!-- Layer Background -->
         <Layer level="BACKGROUND">
-        <FontString inherits="GameFontNormalSmall" text="Modify :">
+        <FontString inherits="GameFontNormalSmall" text="Modify:">
           <Anchors>
             <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
               <Offset>
@@ -694,7 +694,7 @@
         <!-- ########################### -->
         <!-- Layer Background -->
         <Layer level="BACKGROUND">
-        <FontString inherits="GameFontNormalSmall" text="Modify :">
+        <FontString inherits="GameFontNormalSmall" text="Modify:">
           <Anchors>
             <Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
               <Offset>
@@ -728,9 +728,9 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_GM" inherits="OptionsButtonTemplate" text="GM">
+    <Button name="TCh_GM" inherits="OptionsButtonTemplate" text="GM on/off">
     <Size>
-      <AbsDimension x="60" y="20"/>
+      <AbsDimension x="80" y="20"/>
     </Size>
     <Anchors>
       <Anchor point="LEFT" relativeTo="TCh_Modify" relativePoint="LEFT">
@@ -880,9 +880,9 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_Tuer" inherits="OptionsButtonTemplate" text="Tuer">
+    <Button name="TCh_Die" inherits="OptionsButtonTemplate" text="Die / Revive">
     <Size>
-      <AbsDimension x="60" y="20"/>
+      <AbsDimension x="90" y="20"/>
     </Size>
     <Anchors>
       <Anchor point="TOPLEFT" relativeTo="TCh_GMList" relativePoint="BOTTOMLEFT">
@@ -892,8 +892,8 @@
       </Anchor>
     </Anchors>
     <Scripts>
-      <OnMouseDown>TCh_Activer("tuer");</OnMouseDown>
-      <OnEnter>TCh_Tooltip(TCh_bul["tuer"]);</OnEnter>
+      <OnMouseDown>TCh_Activer("die");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["die"]);</OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
@@ -904,7 +904,7 @@
       <AbsDimension x="60" y="20"/>
     </Size>
     <Anchors>
-      <Anchor point="LEFT" relativeTo="TCh_Tuer" relativePoint="RIGHT">
+      <Anchor point="LEFT" relativeTo="TCh_Die" relativePoint="RIGHT">
         <Offset>
           <AbsDimension x="5" y="0" />
         </Offset>
@@ -918,7 +918,7 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_Acct" inherits="OptionsButtonTemplate" text="Acct">
+    <Button name="TCh_Acct" inherits="OptionsButtonTemplate" text="Account">
     <Size>
       <AbsDimension x="60" y="20"/>
     </Size>
@@ -942,7 +942,7 @@
       <AbsDimension x="60" y="20"/>
     </Size>
     <Anchors>
-      <Anchor point="TOPLEFT" relativeTo="TCh_Tuer" relativePoint="BOTTOMLEFT">
+      <Anchor point="TOPLEFT" relativeTo="TCh_Die" relativePoint="BOTTOMLEFT">
         <Offset>
           <AbsDimension x="0" y="-5" />
         </Offset>
@@ -956,7 +956,7 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_Infos" inherits="OptionsButtonTemplate" text="Infos">
+    <Button name="TCh_Infos" inherits="OptionsButtonTemplate" text="Info">
     <Size>
       <AbsDimension x="60" y="20"/>
     </Size>
@@ -1082,7 +1082,7 @@
         </Anchor>
       </Anchors>
       <Layers> <Layer level="BACKGROUND">
-        <FontString inherits="GameFontNormalSmall" text="Annonce/notify :">
+        <FontString inherits="GameFontNormalSmall" text="Annonce/notify:">
           <Anchors>
             <Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT">
               <Offset>
@@ -1324,7 +1324,7 @@
     <!-- Layer Background -->
     <Layer level="ARTWORK">
     <!-- Texte bienvenue -->
-    <FontString inherits="GameFontNormalSmall" text="Macro de bienvenue :">
+    <FontString inherits="GameFontNormalSmall" text="Macro de bienvenue:">
       <Anchors>
         <Anchor point="TOP" relativeTo="$parent" relativePoint="TOP">
           <Offset>

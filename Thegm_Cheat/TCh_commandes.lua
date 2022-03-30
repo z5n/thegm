@@ -18,7 +18,7 @@
 
 --############################################################################################
 --############################################################################################
--- Les commandes MJ ce trouve ci dessous
+-- commands
 
 TCH_MONEY = ".modify money";
 
@@ -34,14 +34,14 @@ TCH_HONOR = ".honor add";
 TCH_HONOR_UPDATE = ".honor update";
 
 TCH_SCALE = ".modify scale";
-TCH_SPEED = ".modify aspeed";
+TCH_SPEED = ".modify speed";
 
 TCH_GM_ON = ".gm on";
 TCH_GM_OFF = ".gm off";
 TCH_WHISP_ON = ".whisper on";
 TCH_WHISP_OFF = ".whisper off";
-TCH_HOVER_ON = ".hover 1";
-TCH_HOVER_OFF = ".hover 0";
+TCH_HOVER_ON = ".hover on";
+TCH_HOVER_OFF = ".hover off";
 TCH_VISIBLE = ".gm visible on";
 TCH_INVISIBLE = ".gm visible off";
 TCH_BANK = ".bank";
@@ -51,13 +51,13 @@ TCH_TAXI_VOIR = ".taxicheat on";
 TCH_TAXI_CACHER = ".taxicheat off";
 TCH_FLYMODE_ON = ".gm fly on";
 TCH_FLYMODE_OFF = ".gm fly off";
-TCH_MAPS_VOIR = ".explorecheat 1";
-TCH_MAPS_CACHER = ".explorecheat 0";
+TCH_MAPS_VOIR = ".cheat explore 1";
+TCH_MAPS_CACHER = ".cheat explore 0";
 
 TCH_DIE = ".die";
 TCH_REVIVE = "/g .revive";
 TCH_KICK = ".kick";
-TCH_ACCT = ".acct";
+TCH_ACCT = ".account";
 
 TCH_GPS = ".gps";
 TCH_INFOS = ".info";
@@ -81,27 +81,27 @@ TCh_bul = {
     ["desc"] = "Cette page rassemble les commandes de cheat";
     ["fermer"] = "Ferme la page cheat";
 
-    ["orp"] = "Cliquez ici pour ajouter la somme d'or indique";
-    ["orm"] = "Cliquez ici pour retirer la somme d'or indique";
-    ["dire"] = "|cffffffffClic :|r pour faire dire a la cible\n|cffffffffClic Droit :|r Pour faire crier la cible";
-    ["modify"] = "Cliquez ici pour changer la valeur maxi ";
-    ["modifylvl"] = "|cffffffffClic :|r Pour ajouter des levels a la cible\n|cffffffffClic Droit :|r Pour retirer des levels la cible";
-    ["modifyhonneur"] = "|cffffffffClic :|r Pour ajouter des points d'honneur a la cible\n|cffffffffClic Droit :|r Pour mettre a jour les point d'honneur de la cible";
-    ["modifyscale"] = "|cffffffffClic :|r Pour modifier la taille de a la cible\n|cffffffffClic Droit :|r Pour remettre la taille de la cible normalement";
-    ["modifyspeed"] = "|cffffffffClic :|r Pour modifier la vitesse de a la cible\n|cffffffffClic Droit :|r Pour remettre la vitesse de la cible normalement";
+    ["orp"] = "|cffffffffLeft Click :|r Click here to add the amount of gold indicated.";
+    ["orm"] = "|cffffffffLeft Click :|r Click here to subtract the amount of gold indicated.";
+    ["dire"] = "|cffffffffLeft Click :|r Make an NPC say something.\n|cffffffffRight Click :|r Make an NPC yell something.";
+    ["modify"] = "|cffffffffLeft Click :|r Cliquez ici pour changer la valeur maxi ";
+    ["modifylvl"] = "|cffffffffLeft Click :|r Pour ajouter des levels a la cible\n|cffffffffRight Click :|r Pour retirer des levels la cible";
+    ["modifyhonneur"] = "|cffffffffLeft Click :|r Pour ajouter des points d'honneur a la cible\n|cffffffffRight Click :|r Pour mettre a jour les point d'honneur de la cible";
+    ["modifyscale"] = "|cffffffffLeft Click :|r Modify the scale of your currently selected target.\n|cffffffffRight Click :|r Revert your currently selected target to normal scale.";
+    ["modifyspeed"] = "|cffffffffLeft Click :|r Modify the speed of your currently selected target.\n|cffffffffRight Click :|r Revert your currently selected target to normal speed.";
 
-    ["GM"] = "|cffffffffClic :|r Pour activer mode GM\n|cffffffffClic Droit :|r Pour desactiver le mode GM\n|cffffffffCtrl + Clic :|r Pour accepter les whisp\n|cffffffffCtrl + Clic Droit :|r Pour desactiver les whisp";
-    ["hover"] = "|cffffffffClic :|r Pour activer le hover mode\n|cffffffffClic Droit :|r Pour desactiver le hover mode";
-    ["invisible"] = "|cffffffffClic :|r Pour activer le mode invisible\n|cffffffffClic Droit :|r Pour desactiver le mode invisible";
-    ["bank"] = "Cliquez pour afficher votre banque";
+    ["GM"] = "|cffffffffLeft Click :|r Enable GM mode.\n|cffffffffRight Click :|r Disable GM mode.\n|cffffffffCtrl + Left Click :|r Enable accepting whispers from players.\n|cffffffffCtrl + Right Click :|r Disable accepting whispers from players.";
+    ["hover"] = "|cffffffffLeft Click :|r Enable hover mode.\n|cffffffffRight Click :|r Disable hover mode.";
+    ["invisible"] = "|cffffffffLeft Click :|r Enable GM invisibility.\n|cffffffffRight Click :|r Disable GM invisibility.";
+    ["bank"] = "|cffffffffLeft Click :|r Show your bank inventory.";
 
-    ["GMlist"] = "Cliquez ici pour afficher la liste des Maitres de jeux connecte";
-    ["flypath"] = "|cffffffffClic :|r Pour voir tous les flypath\n|cffffffffClic Droit :|r Pour retablir a vos flypath";
-    ["flymode"] = "|cffffffffClic :|r Pour activer le mode de vol\n|cffffffffClic Droit :|r Pour desactiver le mode de vol";
-    ["carte"] = "|cffffffffClic :|r Pour voir toutes les cartes\n|cffffffffClic Droit :|r Pour retablir l'affichage de vos carte";
+    ["GMlist"] = "|cffffffffLeft Click :|r Cliquez ici pour afficher la liste des Maitres de jeux connecte";
+    ["flypath"] = "|cffffffffLeft Click :|r Pour voir tous les flypath\n|cffffffffRight Click :|r Pour retablir a vos flypath";
+    ["flymode"] = "|cffffffffLeft Click :|r Pour activer le mode de vol\n|cffffffffRight Click :|r Pour desactiver le mode de vol";
+    ["carte"] = "|cffffffffLeft Click :|r Pour voir toutes les cartes\n|cffffffffRight Click :|r Pour retablir l'affichage de vos carte";
 
-    ["tuer"] = "|cffffffffClic :|r Pour tuer votre cible\n|cffffffffClic Droit :|r Pour faire revivre votre cible";
-    ["kick"] = "Cliquez pour kicker le joueur cible";
+    ["die"] = "|cffffffffLeft Click :|r Kill the selected player. If no player is selected, it will kill you.\n|cffffffffRight Click :|r Revive the selected player. If no player is selected, it will revive you.";
+    ["kick"] = "|cffffffffLeft Click :|r Kick the targeted player from the world.";
     ["acct"] = "Cliquez pour afficher le niveau de compte du joueur cible";
 
     ["gps"] = "Cliquez pour afficher vos coordonnees gps";
@@ -113,14 +113,14 @@ TCh_bul = {
     ["pluie"] = "Cliquez pour mettre de la pluie dans cette zone";
     ["neige"] = "Cliquez pour mettre de la neige dans cette zone";
 
-    ["annonce"] = "|cffffffffClic :|r Pour faire une annonce serveur\n|cffffffffClic Droit :|r Pour faire une annonce serveur avec votre nom\n|cffffffffCtrl + Clic :|r Pour notifier\n|cffffffffCtrl + Clic Droit :|r Pour notifier avec votre nom";
+    ["annonce"] = "|cffffffffLeft Click :|r Pour faire une annonce serveur\n|cffffffffRight Click :|r Pour faire une annonce serveur avec votre nom\n|cffffffffCtrl + Left Click :|r Pour notifier\n|cffffffffCtrl + Right Click :|r Pour notifier avec votre nom";
 
-    ["macro"] = "|cffffffffClic :|r Pour lancer la macro\n|cffffffffClic Droit :|r Pour lancer la macro 2\n|cffffffffCtrl+clic :|r Configurer la macro\n\nMacro pour |cffff0000";
+    ["macro"] = "|cffffffffLeft Click :|r Pour lancer la macro\n|cffffffffRight Click :|r Pour lancer la macro 2\n|cffffffffCtrl+Left Click :|r Configurer la macro\n\nMacro pour |cffff0000";
 }
 
 --############################################################################################
 --############################################################################################
---    LE TEXTE DES ACTIONS
+--    output text
 
 TCh_msg = {
     ["orp"] = "Vous donnez ";
@@ -130,7 +130,7 @@ TCh_msg = {
     ["lvlp"] = "Vous ajouter des lvl a |cff00ff00";
     ["lvlm"] = "Vous retirer de lvl a |cff00ff00";
     ["modify"] = "Vous changer la valeur maxi ";
-    ["modifylvl"] = "|cffffffffClic :|r Pour ajouter des levels a la cible\n|cffffffffClic Droit :|r Pour retirer des levels la cible";
+    ["modifylvl"] = "|cffffffffLeft Click :|r Pour ajouter des levels a la cible\n|cffffffffRight Click :|r Pour retirer des levels la cible";
     ["honneur"] = "Vous ajoutez des points d'honneur a |cff00ff00";
     ["honneurmaj"] = "Vous mettez a jour les points d'honneur de |cff00ff00";
 
@@ -139,30 +139,30 @@ TCh_msg = {
     ["speed"] = "Vous modifier la vitesse de |cff00ff00";
     ["speedr"] = "Vous reinitialiser la vitesse de |cff00ff00";
 
-    ["GMon"] = "Vous activer le mode GM";
-    ["GMoff"] = "Vous desactiver le mode GM";
-    ["whispon"] = "Vous activer les whisp";
-    ["whispoff"] = "Vous desactiver les whisp";
-    ["hoveron"] = "Vous activer le hover mode";
-    ["hoveroff"] = "Vous desactiver le hover mode";
-    ["invisible"] = "Vous activer le mode invisible";
-    ["visible"] = "Vous desactiver le mode invisible";
-    ["bank"] = "Vous affichez votre banque";
+    ["GMon"] = "GM mode is ON.";
+    ["GMoff"] = "GM mode is OFF.";
+    ["whispon"] = "Whispers have been enabled.";
+    ["whispoff"] = "Whispers have been disabled.";
+    ["hoveron"] = "Hover mode has been enabled.";
+    ["hoveroff"] = "Hover mode has been disabled.";
+    ["invisible"] = "You are now visible.";
+    ["visible"] = "You are now invisible.";
+    ["bank"] = "Displaying your bank inventory...";
 
-    ["GMlist"] = "Vous affichez la liste des Maitres de jeux connecte";
+    ["GMlist"] = "Displaying the current GM list...";
     ["flypathvoir"] = "Vous activez tous les maitres de griffon";
     ["flypathcacher"] = "Vous desactivez les maitre de griffon jamais visiter";
-    ["flymodeon"] = "Vous activez le mode de vol";
-    ["flymodeoff"] = "Vous desactivez le mode de vol";
+    ["flymodeon"] = "Flight mode has been enabled.";
+    ["flymodeoff"] = "Flight mode has been disabled.";
     ["cartevoir"] = "Vous affichez toutes les cartes";
     ["cartecacher"] = "Vous masquez les carte non decouverte";
 
-    ["tuer"] = "Vous tuer |cff00ff00";
+    ["die"] = "Killed |cff00ff00";
     ["revivre"] = "Vous faite revivre |cff00ff00";
     ["kick"] = "Vous venez de kicker |cff00ff00";
     ["acct"] = "Vous afficher le niveau du compte de |cff00ff00";
 
-    ["gps"] = "Voici vos coordonnes gps :";
+    ["gps"] = "Displaying the current position information...";
     ["infos"] = "Voici les informations du serveur :";
     ["infosp"] = "Voici les information sur le joueur |cff00ff00";
     ["infosnpc"] = "Voici les information sur la creature |cff00ff00";

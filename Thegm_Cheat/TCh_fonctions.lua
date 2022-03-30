@@ -2,14 +2,14 @@
 -- [InstableDesign] http://instabledesign.pbwiki.com/
 --
 --	Titre			: Thegm Cheat
---	Fichier			: Ch_fonctions.lua
+--	Fichier			: Ch_Functions.lua
 --	Version			: 2.4
 --	Description		: Addon 
 --	Requis			: World Of Warcraft + emulateur Mangos 2.4
 --	Auteur			: InstableDesign chez gmail.com
 --	Site			: http://instabledesign.pbwiki.com/
 --
---	Ce fichier contient les fonctions de la page cheat
+--	Ce fichier contient les Functions de la page cheat
 --
 --	NE PAS MODIFIER CE FICHIER
 --
@@ -22,7 +22,7 @@
 TCh_MacroRec = "a";
 
 ----------------------------------------------------------------------------------------------
---				Fonction /glmcheat
+--				Function /glmcheat
 
 SLASH_TCH1 = "/gmcheat"
 SlashCmdList["TCH"] = function()
@@ -30,7 +30,7 @@ SlashCmdList["TCH"] = function()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction On Show
+--				Function On Show
 
 function TCh_OnShow()
 	if (TCh:IsShown() ) then
@@ -42,7 +42,7 @@ function TCh_OnShow()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction On Load
+--				Function On Load
 
 function TCh_OnLoad()
     this:RegisterEvent('VARIABLES_LOADED');
@@ -59,7 +59,7 @@ function TCh_OnLoad()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Tooltips
+--				Function Tooltips
 
 function TCh_Tooltip(TCh_Corp)
 	GameTooltip:SetOwner(this, "ANCHOR_TOP");
@@ -67,7 +67,7 @@ function TCh_Tooltip(TCh_Corp)
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Parler
+--				Function Parler
 
 function TCh_Dire(TCh_Corp)
 	local editBox = DEFAULT_CHAT_FRAME.editBox;
@@ -76,21 +76,21 @@ function TCh_Dire(TCh_Corp)
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Ajouter un Texte dans le chat
+--				Function Ajouter un Texte dans le chat
 
 function TCh_Msg(TCh_Corp)
 	DEFAULT_CHAT_FRAME:AddMessage(TCh_Name .. TCh_Corp, 1.0, 0.0, 0.0);
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Message d erreur
+--				Function Message d erreur
 
 function TCh_Erreur(TCh_Corp)
 	UIErrorsFrame:AddMessage(TCh_Name .. TCh_Corp, 1.0, 1.0, 0.0, 1.0, 5);
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Cible nom
+--				Function Cible nom
 
 function TCh_TName()
 	if UnitName("target") then
@@ -101,7 +101,7 @@ function TCh_TName()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Argent
+--				Function Argent
 
 function TCh_Tune(TCh_Transaction)
 	local TCh_Total = 0;
@@ -141,7 +141,7 @@ function TCh_Tune(TCh_Transaction)
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction dire crier
+--				Function dire crier
 
 function TCh_Crier()
 	if (TCh_Say:GetText() ~= "") then
@@ -157,10 +157,10 @@ function TCh_Crier()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction modify
+--				Function modify
 
 function TCh_Modify_Val(TCh_choix)
--- Finction modify lvl
+-- Function modify lvl
 	if (TCh_choix == "lvl") then
 		if ( arg1 == "RightButton" ) then
 			TCh_Msg(TCh_msg["lvlm"] .. TCh_TName());
@@ -169,23 +169,23 @@ function TCh_Modify_Val(TCh_choix)
 			TCh_Msg(TCh_msg["lvlp"] .. TCh_TName());
 			TCh_Dire(TCH_LEVEL .. " " .. TCh_Modify:GetText());
 		end
--- Fonction modify hp
+-- Function modify hp
 	elseif (TCh_choix == "hp") then
 			TCh_Msg(TCh_msg["modify"] .. "de vie a |cff00ff00" .. TCh_TName());
 			TCh_Dire(TCH_HP .. " " .. TCh_Modify:GetText());
--- Fonction modify mana
+-- Function modify mana
 	elseif (TCh_choix == "mana") then
 			TCh_Msg(TCh_msg["modify"] .. "de mana a |cff00ff00" .. TCh_TName());
 			TCh_Dire(TCH_MANA .. " " .. TCh_Modify:GetText());
--- Fonction modify rage
+-- Function modify rage
 	elseif (TCh_choix == "rage") then
 			TCh_Msg(TCh_msg["modify"] .. "de rage a |cff00ff00" .. TCh_TName());
 			TCh_Dire(TCH_RAGE .. " " .. TCh_Modify:GetText());
--- Fonction modify energie
+-- Function modify energie
 	elseif (TCh_choix == "energie") then
 			TCh_Msg(TCh_msg["modify"] .. "d'energie a |cff00ff00" .. TCh_TName());
 			TCh_Dire(TCH_ENERGY .. " " .. TCh_Modify:GetText());
--- Fonction modify honneur
+-- Function modify honneur
 	elseif (TCh_choix == "honneur") then
 		if ( arg1 == "RightButton" ) then
 			TCh_Msg(TCh_msg["honneurmaj"] .. TCh_TName());
@@ -196,7 +196,7 @@ function TCh_Modify_Val(TCh_choix)
 		end
 	end
 
--- Fonction modify taille
+-- Function modify taille
 	if (TCh_choix == "taille") then
 		if ( arg1 == "RightButton" ) then
 			TCh_Msg(TCh_msg["tailler"] .. TCh_TName());
@@ -205,7 +205,7 @@ function TCh_Modify_Val(TCh_choix)
 			TCh_Msg(TCh_msg["taille"] .. TCh_TName());
 			TCh_Dire(TCH_SCALE .. " " .. TCh_Modify_Slider:GetValue());
 		end
--- Fonction modify speed
+-- Function modify speed
 	elseif (TCh_choix == "speed") then
 		if ( arg1 == "RightButton" ) then
 			TCh_Msg(TCh_msg["speedr"] .. TCh_TName());
@@ -218,7 +218,7 @@ function TCh_Modify_Val(TCh_choix)
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction GM Mode
+--				Function GM Mode
 
 function TCh_GM_Mode()
 	if ( arg1 == "LeftButton" ) then
@@ -241,10 +241,10 @@ function TCh_GM_Mode()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction activer/desactiver
+--				Function activer/desactiver
 
 function TCh_Activer(TCh_choix)
--- Fonction hover
+-- Function hover
 	if (TCh_choix == "hover") then
 		if ( arg1 == "LeftButton" ) then
 			TCh_Msg(TCh_msg["hoveron"]);
@@ -253,7 +253,7 @@ function TCh_Activer(TCh_choix)
 			TCh_Msg(TCh_msg["hoveroff"]);
 			TCh_Dire(TCH_HOVER_OFF);
 		end
--- Fonction invisible
+-- Function invisible
 	elseif (TCh_choix == "invisible") then
 		if ( arg1 == "LeftButton" ) then
 			TCh_Msg(TCh_msg["invisible"]);
@@ -262,7 +262,7 @@ function TCh_Activer(TCh_choix)
 			TCh_Msg(TCh_msg["visible"]);
 			TCh_Dire(TCH_VISIBLE);
 		end
--- Fonction flypath
+-- Function flypath
 	elseif (TCh_choix == "flypath") then
 		if ( arg1 == "LeftButton" ) then
 			TCh_Msg(TCh_msg["flypathvoir"]);
@@ -271,7 +271,7 @@ function TCh_Activer(TCh_choix)
 			TCh_Msg(TCh_msg["flypathcacher"]);
 			TCh_Dire(TCH_TAXI_CACHER);
 		end
--- Fonction flymode
+-- Function flymode
 	elseif (TCh_choix == "flymode") then
 		if ( arg1 == "LeftButton" ) then
 			TCh_Msg(TCh_msg["flymodeon"]);
@@ -280,7 +280,7 @@ function TCh_Activer(TCh_choix)
 			TCh_Msg(TCh_msg["flymodeoff"]);
 			TCh_Dire(TCH_FLYMODE_OFF);
 		end
--- Fonction carte
+-- Function carte
 	elseif (TCh_choix == "carte") then
 		if ( arg1 == "LeftButton" ) then
 			TCh_Msg(TCh_msg["cartevoir"]);
@@ -289,20 +289,20 @@ function TCh_Activer(TCh_choix)
 			TCh_Msg(TCh_msg["cartecacher"]);
 			TCh_Dire(TCH_MAPS_CACHER);
 		end
--- Fonction tuer
-	elseif (TCh_choix == "tuer") then
+-- Function die
+	elseif (TCh_choix == "die") then
 		if ( arg1 == "LeftButton" ) then
-			TCh_Msg(TCh_msg["tuer"] .. TCh_TName());
+			TCh_Msg(TCh_msg["die"] .. TCh_TName());
 			TCh_Dire(TCH_DIE);
 		else
-			TCh_Msg(TCh_msg["revivre"] .. TCh_TName());
+			TCh_Msg(TCh_msg["revivre"] .. TCh_TName() .. ".");
 			TCh_Dire(TCH_REVIVE);
 		end
 	end
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Infocible
+--				Function Infocible
 
 function TCh_Infoscible()
 	if UnitIsPlayer("target") then
@@ -315,28 +315,28 @@ function TCh_Infoscible()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Annoncer
+--				Function Annoncer
 
 function TCh_Annoncer()
 	if TCh_Annonce:GetText() == "" then
 		TCh_Msg(TCh_erreur["valeur"]);
 	else
 		if IsControlKeyDown() then
-		-- Fonction notify
+		-- Function notify
 			if ( arg1 == "LeftButton" ) then
 				TCh_Msg(TCh_msg["notify"]);
 				TCh_Dire(TCH_NOTIFY .. " " .. TCh_Annonce:GetText());
-		-- Fonction notify avec affichage du nom
+		-- Function notify avec affichage du nom
 			else
 				TCh_Msg(TCh_msg["notifynom"]);
 				TCh_Dire(TCH_NOTIFY .. " " .. TCh_Annonce:GetText().. " <MJ>" .. UnitName("player"));
 			end
 		else
-		-- Fonction annonce
+		-- Function annonce
 			if ( arg1 == "LeftButton" ) then
 				TCh_Msg(TCh_msg["annonce"]);
 				TCh_Dire(TCH_ANNOUNCE .. " " .. TCh_Annonce:GetText());
-		-- Fonction annonce avec affichage du nom
+		-- Function annonce avec affichage du nom
 			else
 				TCh_Msg(TCh_msg["annoncenom"]);
 				TCh_Dire(TCH_ANNOUNCE .. " " .. TCh_Annonce:GetText().. " <MJ>" .. UnitName("player"));
@@ -346,7 +346,7 @@ function TCh_Annoncer()
 end
 
 ----------------------------------------------------------------------------------------------
---				Fonction Echelle de slider
+--				Function Echelle de slider
 
 function Tch_Echelle(Tch_choix)
 	if Tch_choix == "s" then
@@ -364,10 +364,10 @@ end
 
 
 ----------------------------------------------------------------------------------------------
---				Fonction Macro
+--				Function Macro
 
 function TCh_Macro_Click(TCh_choix)
--- Fonction Macro Guerrier
+-- Function Macro Guerrier
 	if (TCh_choix == "TCh_MGuerrier") then
 		TCh_MacroRec = "TCh_MGuerrier";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -395,7 +395,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro Mage
+-- Function Macro Mage
 	elseif (TCh_choix == "TCh_MMage") then
 		TCh_MacroRec = "TCh_MMage";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -423,7 +423,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro Voleur
+-- Function Macro Voleur
 	elseif (TCh_choix == "TCh_MVoleur") then
 		TCh_MacroRec = "TCh_MVoleur";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -451,7 +451,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro Druid
+-- Function Macro Druid
 	elseif (TCh_choix == "TCh_MDruid") then
 		TCh_MacroRec = "TCh_MDruid";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -479,7 +479,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro Chasseur
+-- Function Macro Chasseur
 	elseif (TCh_choix == "TCh_MChasseur") then
 		TCh_MacroRec = "TCh_MChasseur";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -507,7 +507,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro Chaman
+-- Function Macro Chaman
 	elseif (TCh_choix == "TCh_MChaman") then
 		TCh_MacroRec = "TCh_MChaman";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -535,7 +535,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro pretre
+-- Function Macro pretre
 	elseif (TCh_choix == "TCh_MPretre") then
 		TCh_MacroRec = "TCh_MPretre";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -563,7 +563,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro Demoniste
+-- Function Macro Demoniste
 	elseif (TCh_choix == "TCh_MDemoniste") then
 		TCh_MacroRec = "TCh_MDemoniste";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -591,7 +591,7 @@ function TCh_Macro_Click(TCh_choix)
 				end
 			end
 		end
--- Fonction Macro Paladin
+-- Function Macro Paladin
 	elseif (TCh_choix == "TCh_MPaladin") then
 		TCh_MacroRec = "TCh_MPaladin";
 		TCh_MacroIcone:SetTexture("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes");
@@ -637,13 +637,13 @@ end
 function TCh_MacroDire(s)
 	TCh_MacroEach(TCh_split (s,"\n"));
 end
--- Fonction Macro dire chaque ligne 
+-- Function Macro dire chaque ligne 
 function TCh_MacroEach(var)
   for i=1,table.maxn (var) do
 	TCh_Dire(var[i]);
   end
 end
--- Fonction Macro decouper la chaine par ligne
+-- Function Macro decouper la chaine par ligne
 function TCh_split( chaine, inSplitPattern )
   outResults = { }
   local theStart = 1
@@ -658,4 +658,6 @@ function TCh_split( chaine, inSplitPattern )
 end
 
 TCh_By = "InstableDesign";
-TCh_Name = "|cffef7801[ The Gm ]|r |cffffffff Cheat : |r";
+TCh_Name = "|cffef7801[TheGm]|r ";
+-- TCh_Name = "|cffef7801[ The Gm ]|r |cffffffff Cheat : |r";
+
