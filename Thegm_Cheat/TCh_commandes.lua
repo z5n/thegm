@@ -45,13 +45,14 @@ TCH_HOVER_OFF = ".hover off";
 TCH_VISIBLE = ".gm visible on";
 TCH_INVISIBLE = ".gm visible off";
 TCH_BANK = ".bank";
-TCH_GM_LIST = ".gm list";
-TCH_TAXI_VOIR = ".taxicheat on";
-TCH_TAXI_CACHER = ".taxicheat off";
+
+TCH_GM_LIST = ".gm ingame";
+TCH_TAXI_VOIR = ".cheat taxi on";
+TCH_TAXI_CACHER = ".cheat taxi off";
 TCH_FLYMODE_ON = ".gm fly on";
 TCH_FLYMODE_OFF = ".gm fly off";
-TCH_MAPS_VOIR = ".cheat explore 1";
-TCH_MAPS_CACHER = ".cheat explore 0";
+TCH_MAPS_VOIR = ".cheat explore on";
+TCH_MAPS_CACHER = ".cheat explore off";
 
 TCH_DIE = ".die";
 TCH_REVIVE = "/g .revive";
@@ -59,7 +60,7 @@ TCH_KICK = ".kick";
 TCH_ACCT = ".account";
 
 TCH_GPS = ".gps";
-TCH_INFOS = ".info";
+TCH_INFOS = ".server info";
 TCH_PINFO = ".pinfo";
 TCH_NPCINFO = ".npc info";
 
@@ -73,19 +74,19 @@ TCH_NOTIFY = ".notify";
 
 --############################################################################################
 --############################################################################################
---    LE TEXTE DANS LES INFOBULLES
+--    hover text
 
 TCh_bul = {
-    ["ouvrir"] = "Affiche la page des cheat\n|cff999999Cliquez sur le bord pour deplacer le bouton|r";
-    ["desc"] = "Cette page rassemble les commandes de cheat";
-    ["fermer"] = "Ferme la page cheat";
+    ["ouvrir"] = "Tool window for GMs.";
+    ["desc"] = "Tool window for GMs.";
+    ["exit"] = "Close the tool window.";
 
     ["orp"] = "|cffffffffLeft Click :|r Click here to add the amount of gold indicated.";
     ["orm"] = "|cffffffffLeft Click :|r Click here to subtract the amount of gold indicated.";
     ["dire"] = "|cffffffffLeft Click :|r Make an NPC say something.\n|cffffffffRight Click :|r Make an NPC yell something.";
     ["modify"] = "|cffffffffLeft Click :|r Cliquez ici pour changer la valeur maxi ";
-    ["modifylvl"] = "|cffffffffLeft Click :|r Pour ajouter des levels a la cible\n|cffffffffRight Click :|r Pour retirer des levels la cible";
-    ["modifyhonneur"] = "|cffffffffLeft Click :|r Pour ajouter des points d'honneur a la cible\n|cffffffffRight Click :|r Pour mettre a jour les point d'honneur de la cible";
+    ["modifylvl"] = "|cffffffffLeft Click :|r Increase the level of a player by a set amount.\n|cffffffffRight Click :|r Decrease the level of a player by a set amount.";
+    ["modifyhonneur"] = "|cffffffffLeft Click :|r Add a set amount of honor points to the selected player.\n|cffffffffRight Click :|r Remove a set amount of honor points from the selected player.";
     ["modifyscale"] = "|cffffffffLeft Click :|r Modify the scale of your currently selected target.\n|cffffffffRight Click :|r Revert your currently selected target to normal scale.";
     ["modifyspeed"] = "|cffffffffLeft Click :|r Modify the speed of your currently selected target.\n|cffffffffRight Click :|r Revert your currently selected target to normal speed.";
 
@@ -94,25 +95,25 @@ TCh_bul = {
     ["invisible"] = "|cffffffffLeft Click :|r Enable GM invisibility.\n|cffffffffRight Click :|r Disable GM invisibility.";
     ["bank"] = "|cffffffffLeft Click :|r Show your bank inventory.";
 
-    ["GMlist"] = "|cffffffffLeft Click :|r Cliquez ici pour afficher la liste des Maitres de jeux connecte";
-    ["flypath"] = "|cffffffffLeft Click :|r Pour voir tous les flypath\n|cffffffffRight Click :|r Pour retablir a vos flypath";
-    ["flymode"] = "|cffffffffLeft Click :|r Pour activer le mode de vol\n|cffffffffRight Click :|r Pour desactiver le mode de vol";
-    ["carte"] = "|cffffffffLeft Click :|r Pour voir toutes les cartes\n|cffffffffRight Click :|r Pour retablir l'affichage de vos carte";
+    ["GMlist"] = "|cffffffffLeft Click :|r Display a list of all the Game Masters currently online.";
+    ["flypath"] = "|cffffffffLeft Click :|r Temporaily reveal all flight path routes for the selected player.\n|cffffffffRight Click :|r Temporaily hide all flight path routes for the selected player";
+    ["flymode"] = "|cffffffffLeft Click :|r Enable GM fly mode.\n|cffffffffRight Click :|r Disable GM fly mode.";
+    ["carte"] = "|cffffffffLeft Click :|r Reveal all maps for the selected player.\n|cffffffffRight Click :|r Hide all maps for the selected player.";
 
     ["die"] = "|cffffffffLeft Click :|r Kill the selected player. If no player is selected, it will kill you.\n|cffffffffRight Click :|r Revive the selected player. If no player is selected, it will revive you.";
     ["kick"] = "|cffffffffLeft Click :|r Kick the targeted player from the world.";
-    ["acct"] = "Cliquez pour afficher le niveau de compte du joueur cible";
+    ["acct"] = "Display current account level.";
 
-    ["gps"] = "Cliquez pour afficher vos coordonnees gps";
-    ["infos"] = "Cliquez pour afficher les informations du serveur";
-    ["infoscible"] = "Cliquez pour afficher les informations de la cible joueur ou PNJ";
+    ["gps"] = "Display the current position information.";
+    ["infos"] = "Display server version and the number of connected players.";
+    ["infoscible"] = "Output account information for selected player.";
 
     ["soleil"] = "Cliquez pour mettre du soleil dans cette zone";
     ["cielgris"] = "Cliquez pour mettre un ciel gris dans cette zone";
     ["pluie"] = "Cliquez pour mettre de la pluie dans cette zone";
     ["neige"] = "Cliquez pour mettre de la neige dans cette zone";
 
-    ["annonce"] = "|cffffffffLeft Click :|r Pour faire une annonce serveur\n|cffffffffRight Click :|r Pour faire une annonce serveur avec votre nom\n|cffffffffCtrl + Left Click :|r Pour notifier\n|cffffffffCtrl + Right Click :|r Pour notifier avec votre nom";
+    ["annonce"] = "|cffffffffLeft Click :|r Send a system message to all players online in chat log.\n|cffffffffRight Click :|r Pour faire une annonce serveur avec votre nom\n|cffffffffCtrl + Left Click :|r Pour notifier\n|cffffffffCtrl + Right Click :|r Pour notifier avec votre nom";
 
     ["macro"] = "|cffffffffLeft Click :|r Pour lancer la macro\n|cffffffffRight Click :|r Pour lancer la macro 2\n|cffffffffCtrl+Left Click :|r Configurer la macro\n\nMacro pour |cffff0000";
 }
@@ -148,7 +149,7 @@ TCh_msg = {
     ["visible"] = "You are now invisible.";
     ["bank"] = "Displaying your bank inventory...";
 
-    ["GMlist"] = "Displaying the current GM list...";
+    ["GMlist"] = "Displaying all the GMs currently online...";
     ["flypathvoir"] = "Vous activez tous les maitres de griffon";
     ["flypathcacher"] = "Vous desactivez les maitre de griffon jamais visiter";
     ["flymodeon"] = "Flight mode has been enabled.";
@@ -157,9 +158,9 @@ TCh_msg = {
     ["cartecacher"] = "Vous masquez les carte non decouverte";
 
     ["die"] = "Killed |cff00ff00";
-    ["revivre"] = "Revived |cff00ff00";
-    ["kick"] = "Kicked |cff00ff00";
-    ["acct"] = "Vous afficher le niveau du compte de |cff00ff00";
+    ["revivre"] = "Vous faite revivre |cff00ff00";
+    ["kick"] = "Vous venez de kicker |cff00ff00";
+    ["acct"] = "Displaying current account level...";
 
     ["gps"] = "Displaying the current position information...";
     ["infos"] = "Voici les informations du serveur :";

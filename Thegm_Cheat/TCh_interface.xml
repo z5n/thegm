@@ -260,7 +260,7 @@
     <!-- Layer Artwork -->
     <Layer level="ARTWORK">
     <!-- Titre de la fenetre -->
-    <FontString inherits="GameFontNormal" text="[ Thegm ] Cheat">
+    <FontString inherits="GameFontNormal" text="[TheGM] Cheat">
       <Size>
         <AbsDimension x="384" y="12"/>
       </Size>
@@ -861,7 +861,7 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_Carte" inherits="OptionsButtonTemplate" text="Carte">
+    <Button name="TCh_Carte" inherits="OptionsButtonTemplate" text="Explore">
     <Size>
       <AbsDimension x="60" y="20"/>
     </Size>
@@ -1050,7 +1050,7 @@
     </Scripts>
     </Button>
     <!-- ############################################### -->
-    <!-- GM Boutton -->
+    <!-- GM Button -->
     <Button name="TCh_Neige" inherits="OptionsButtonTemplate" text="Neige">
     <Size>
       <AbsDimension x="60" y="20"/>
@@ -1069,7 +1069,7 @@
     </Scripts>
     </Button>
     <!-- ############################################### -->
-    <!-- Btn Annonces -->
+    <!-- Btn Announce -->
     <EditBox name="TCh_Annonce" autoFocus="false" inherits="InputBoxTemplate">
       <Size>
         <AbsDimension x="90" y="10"/>
@@ -1082,7 +1082,7 @@
         </Anchor>
       </Anchors>
       <Layers> <Layer level="BACKGROUND">
-        <FontString inherits="GameFontNormalSmall" text="Annonce/notify:">
+        <FontString inherits="GameFontNormalSmall" text="Announce/Notify:">
           <Anchors>
             <Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT">
               <Offset>
@@ -1257,8 +1257,8 @@
     </Scripts>
     </Button>
     <!-- ############################################### -->
-    <!-- Boutton Fermer -->
-    <Button inherits="OptionsButtonTemplate" text="Fermer">
+    <!-- Button Exit -->
+    <Button inherits="OptionsButtonTemplate" text="Exit">
     <Size>
       <AbsDimension x="80" y="23"/>
     </Size>
@@ -1271,12 +1271,12 @@
     </Anchors>
     <Scripts>
       <OnClick>TCh_OnShow();</OnClick>
-      <OnEnter>TCh_Tooltip(TCh_bul["fermer"]); </OnEnter>
+      <OnEnter>TCh_Tooltip(TCh_bul["exit"]); </OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
     <!-- ############################################### -->
-    <!-- Boutton Close -->
+    <!-- Button Close -->
     <Button inherits="UIPanelCloseButton">
     <Anchors>
       <Anchor point="TOPRIGHT" relativeTo="TCh" relativePoint="TOPRIGHT">
