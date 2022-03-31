@@ -309,21 +309,21 @@ end
 ----------------------------------------------------------------------------------------------
 --				Fonction Capture message dans le chat
 
-local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
-function ChatFrame_MessageEventHandler( event, ... )
-	if event == "CHAT_MSG_SYSTEM" then
-		if (string.find (arg1,"Hcreature_entry")) and (TM ~= nil) then
-			TM_Mobs(arg1);
-			if (TM_CheckMobs:GetChecked()) then
-				return ORIG_ChatFrame_MessageEventHandler( event, ... );
-			end
-		else
-			return ORIG_ChatFrame_MessageEventHandler( event, ... );
-		end
-	else
-		return ORIG_ChatFrame_MessageEventHandler( event, ... );
-	end
-end
+-- local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
+-- function ChatFrame_MessageEventHandler( event, ... )
+-- 	if event == "CHAT_MSG_SYSTEM" then
+-- 		if (string.find (arg1,"Hcreature_entry")) and (TM ~= nil) then
+-- 			TM_Mobs(arg1);
+-- 			if (TM_CheckMobs:GetChecked()) then
+-- 				return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 			end
+-- 		else
+-- 			return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 		end
+-- 	else
+-- 		return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 	end
+-- end
 
 ----------------------------------------------------------------------------------------------
 --				Resultat recherche
