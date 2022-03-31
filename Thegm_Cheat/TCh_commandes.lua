@@ -45,7 +45,6 @@ TCH_HOVER_OFF = ".hover off";
 TCH_VISIBLE = ".gm visible on";
 TCH_INVISIBLE = ".gm visible off";
 TCH_BANK = ".bank";
-
 TCH_GM_LIST = ".gm list";
 TCH_TAXI_VOIR = ".taxicheat on";
 TCH_TAXI_CACHER = ".taxicheat off";
@@ -158,8 +157,8 @@ TCh_msg = {
     ["cartecacher"] = "Vous masquez les carte non decouverte";
 
     ["die"] = "Killed |cff00ff00";
-    ["revivre"] = "Vous faite revivre |cff00ff00";
-    ["kick"] = "Vous venez de kicker |cff00ff00";
+    ["revivre"] = "Revived |cff00ff00";
+    ["kick"] = "Kicked |cff00ff00";
     ["acct"] = "Vous afficher le niveau du compte de |cff00ff00";
 
     ["gps"] = "Displaying the current position information...";
