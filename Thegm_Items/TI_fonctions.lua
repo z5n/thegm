@@ -265,26 +265,26 @@ end
 ----------------------------------------------------------------------------------------------
 --				Fonction Capture message dans le chat
 
-local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
-function ChatFrame_MessageEventHandler( event, ... )
-	if event == "CHAT_MSG_SYSTEM" then
-		if (string.find (arg1, TI_Find_Stuff)) and (TI ~= nil) then
-			TI_Set(arg1);
-			if (TI_CheckItems:GetChecked()) then
-				return ORIG_ChatFrame_MessageEventHandler( event, ... );
-			end
-		elseif (string.find (arg1, TI_Find_Items)) and (TI ~= nil) then
-			TI_Items(arg1);
-			if (TI_CheckItems:GetChecked()) then
-				return ORIG_ChatFrame_MessageEventHandler( event, ... );
-			end
-		else
-			return ORIG_ChatFrame_MessageEventHandler( event, ... );
-		end
-	else
-		return ORIG_ChatFrame_MessageEventHandler( event, ... );
-	end
-end
+-- local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
+-- function ChatFrame_MessageEventHandler( event, ... )
+-- 	if event == "CHAT_MSG_SYSTEM" then
+-- 		if (string.find (arg1, TI_Find_Stuff)) and (TI ~= nil) then
+-- 			TI_Set(arg1);
+-- 			if (TI_CheckItems:GetChecked()) then
+-- 				return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 			end
+-- 		elseif (string.find (arg1, TI_Find_Items)) and (TI ~= nil) then
+-- 			TI_Items(arg1);
+-- 			if (TI_CheckItems:GetChecked()) then
+-- 				return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 			end
+-- 		else
+-- 			return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 		end
+-- 	else
+-- 		return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 	end
+-- end
 
 ----------------------------------------------------------------------------------------------
 --				Resultat recherche ITEM

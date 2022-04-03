@@ -174,21 +174,21 @@ end
 ----------------------------------------------------------------------------------------------
 --				Fonction Recup message du chat
 
-local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
-function ChatFrame_MessageEventHandler( event, ... )
-	if event == "CHAT_MSG_SYSTEM" then
-		if string.find (arg1,TS_Find_Sorts)  then
-			TS_Sorts(arg1);
-			if (TS_CheckSpell:GetChecked()) then
-				return ORIG_ChatFrame_MessageEventHandler( event, ... );
-			end
-		else
-			return ORIG_ChatFrame_MessageEventHandler( event, ... );
-		end
-	else
-		return ORIG_ChatFrame_MessageEventHandler( event, ... );
-	end
-end
+-- local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
+-- function ChatFrame_MessageEventHandler( event, ... )
+-- 	if event == "CHAT_MSG_SYSTEM" then
+-- 		if string.find (arg1,TS_Find_Sorts)  then
+-- 			TS_Sorts(arg1);
+-- 			if (TS_CheckSpell:GetChecked()) then
+-- 				return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 			end
+-- 		else
+-- 			return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 		end
+-- 	else
+-- 		return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 	end
+-- end
 
 ----------------------------------------------------------------------------------------------
 --				Fonction tri du resultat

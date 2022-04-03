@@ -9,9 +9,9 @@
 --	Auteur			: InstableDesign chez gmail.com
 --	Site			: http://instabledesign.pbwiki.com/
 --
---	Ce fichier contient les commandes MJ de la page cheat.
+--	This file contains the GM commands from the cheat page.
 --
---	VOUS POUVEZ MODIFIER CE FICHIER
+--	YOU CAN EDIT THIS PAGE
 --
 -- [InstableDesign] http://instabledesign.pbwiki.com/
 --############################################################################################
@@ -158,8 +158,8 @@ TCh_msg = {
     ["cartecacher"] = "Vous masquez les carte non decouverte";
 
     ["die"] = "Killed |cff00ff00";
-    ["revivre"] = "Vous faite revivre |cff00ff00";
-    ["kick"] = "Vous venez de kicker |cff00ff00";
+    ["revivre"] = "Revived |cff00ff00";
+    ["kick"] = "Kicked |cff00ff00";
     ["acct"] = "Displaying current account level...";
 
     ["gps"] = "Displaying the current position information...";

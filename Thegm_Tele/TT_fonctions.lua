@@ -280,27 +280,27 @@ end
 ----------------------------------------------------------------------------------------------
 --				Fonction Capture chat
 
-local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
-function ChatFrame_MessageEventHandler( event, ... )
-	if event == "CHAT_MSG_SYSTEM" then
+-- local ORIG_ChatFrame_MessageEventHandler = ChatFrame_MessageEventHandler
+-- function ChatFrame_MessageEventHandler( event, ... )
+-- 	if event == "CHAT_MSG_SYSTEM" then
 
-		if string.find(arg1, TT_Find_Coord) then
-			for x, y, z in string.gmatch(arg1, TT_Find_Coord) do
-				TT_Temp = {x,y,z};
-			end
-			return ORIG_ChatFrame_MessageEventHandler( event, ... );
-		elseif string.find(arg1, TT_Find_Map) then
-			for MapId in string.gmatch(arg1, TT_Find_Map) do
-				TT_Temp2 = MapId;
-			end
-			return ORIG_ChatFrame_MessageEventHandler( event, ... );
-		else
-			return ORIG_ChatFrame_MessageEventHandler( event, ... );
-		end
-	else
-		return ORIG_ChatFrame_MessageEventHandler( event, ... );
-	end
-end
+-- 		if string.find(arg1, TT_Find_Coord) then
+-- 			for x, y, z in string.gmatch(arg1, TT_Find_Coord) do
+-- 				TT_Temp = {x,y,z};
+-- 			end
+-- 			return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 		elseif string.find(arg1, TT_Find_Map) then
+-- 			for MapId in string.gmatch(arg1, TT_Find_Map) do
+-- 				TT_Temp2 = MapId;
+-- 			end
+-- 			return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 		else
+-- 			return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 		end
+-- 	else
+-- 		return ORIG_ChatFrame_MessageEventHandler( event, ... );
+-- 	end
+-- end
 
 
 TT_By = "InstableDesign";
