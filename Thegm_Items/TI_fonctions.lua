@@ -94,9 +94,10 @@ end
 --				Function stuff MJ
 
 function TI_StuffMJ_OnClick()
-	TI_Dire(TI_ADDITEM .. " " .. TI_STUFFROBE);
+	TI_Dire(TI_ADDITEM .. " " .. TI_ROBE);
 	TI_Dire(TI_ADDITEM .. " " .. TI_SLIPPERS);
-	TI_Dire(TI_ADDITEM .. " " .. TI_HOOD);
+	TI_Dire(TI_ADDITEM .. " " .. TI_SHIRT);
+    TI_Dire(TI_ADDITEM .. " " .. TI_RING);
 end
 
 ----------------------------------------------------------------------------------------------

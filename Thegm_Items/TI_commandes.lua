@@ -22,12 +22,14 @@
 
 TI_LISTITEM = ".list item";
 TI_ADDITEM = ".additem";
-TI_ADDITEMSET = ".additemset";
+TI_ADDITEMSET = ".additem set";
 TI_LOOKUPSET = ".lookup itemset";
 TI_LOOKUPITEM = ".lookup item";
-TI_STUFFROBE = "2586";
+TI_ROBE = "2586";
 TI_SLIPPERS = "11508";
 TI_HOOD = "12064";
+TI_SHIRT = "17"
+TI_RING = "12947 2";
 
 --############################################################################################
 --############################################################################################

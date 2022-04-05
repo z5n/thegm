@@ -1,0 +1,7 @@
+## Interface: 40200
+## Title: |cffef7801[TheGM]|r Teleportation
+## Author: Instable Design
+## Version: 2.4
+## Notes: Teleportation addon for GMs. |c33333333By: Instable Design|r
+## SavedVariables: TT_Favoris
+interface.xml

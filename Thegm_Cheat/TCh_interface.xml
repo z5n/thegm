@@ -497,7 +497,7 @@
     </EditBox>
     <!-- ############################################### -->
     <!-- Bouton faire dire crier -->
-    <Button name="TCh_BtnSay" inherits="OptionsButtonTemplate" text="Dire">
+    <Button name="TCh_BtnSay" inherits="OptionsButtonTemplate" text="Run">
     <Size>
       <AbsDimension x="40" y="20"/>
     </Size>
@@ -544,9 +544,9 @@
     </EditBox>
     <!-- ############################################### -->
     <!-- Modify HP Boutton -->
-    <Button name="TCh_Modify_Lvl" inherits="OptionsButtonTemplate" text="Lvl">
+    <Button name="TCh_Modify_Lvl" inherits="OptionsButtonTemplate" text="Level">
     <Size>
-      <AbsDimension x="30" y="20"/>
+      <AbsDimension x="45" y="20"/>
     </Size>
     <Anchors>
       <Anchor point="LEFT" relativeTo="TCh_Modify" relativePoint="RIGHT">
@@ -563,7 +563,7 @@
     </Button>
     <!-- ############################################### -->
     <!-- Modify HP Boutton -->
-    <Button name="TCh_Modify_Hp" inherits="OptionsButtonTemplate" text="Hp">
+    <Button name="TCh_Modify_Hp" inherits="OptionsButtonTemplate" text="HP">
     <Size>
       <AbsDimension x="30" y="20"/>
     </Size>
@@ -576,8 +576,7 @@
     </Anchors>
     <Scripts>
       <OnMouseDown>TCh_Modify_Val("hp");</OnMouseDown>
-      >
-      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "de PV"); </OnEnter>
+      <OnEnter>TCh_Tooltip(TCh_bul["modifyhp"]); </OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
@@ -596,7 +595,7 @@
     </Anchors>
     <Scripts>
       <OnMouseDown>TCh_Modify_Val("mana");</OnMouseDown>
-      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "de Mana"); </OnEnter>
+      <OnEnter>TCh_Tooltip(TCh_bul["modifymana"]); </OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
@@ -614,14 +613,14 @@
       </Anchor>
     </Anchors>
     <Scripts>
-      <OnMouseDown>TCh_Modify_Val("rage")</OnMouseDown>
-      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "de Rage"); </OnEnter>
+      <OnMouseDown>TCh_Modify_Val("rage");</OnMouseDown>
+      <OnEnter>TCh_Tooltip(TCh_bul["modifyrage"]); </OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
     <!-- ############################################### -->
     <!-- Modify Energie Boutton -->
-    <Button name="TCh_Modify_Energie" inherits="OptionsButtonTemplate" text="Energie">
+    <Button name="TCh_Modify_Energie" inherits="OptionsButtonTemplate" text="Energy">
     <Size>
       <AbsDimension x="48" y="20"/>
     </Size>
@@ -634,15 +633,15 @@
     </Anchors>
     <Scripts>
       <OnMouseDown>TCh_Modify_Val("energie");</OnMouseDown>
-      <OnEnter>TCh_Tooltip(TCh_bul["modify"] .. "d'Energie"); </OnEnter>
+      <OnEnter>TCh_Tooltip(TCh_bul["modifyenergy"]); </OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
     <!-- ############################################### -->
     <!-- Modify Boutton -->
-    <Button name="TCh_Modify_Honneur" inherits="OptionsButtonTemplate" text="Honneur">
+    <Button name="TCh_Modify_Honneur" inherits="OptionsButtonTemplate" text="Honor">
     <Size>
-      <AbsDimension x="58" y="20"/>
+      <AbsDimension x="50" y="20"/>
     </Size>
     <Anchors>
       <Anchor point="LEFT" relativeTo="TCh_Modify_Energie" relativePoint="RIGHT">
@@ -659,7 +658,7 @@
     </Button>
     <!-- ############################################### -->
     <!-- Modify Boutton -->
-    <Button name="TCh_Modify_Taille" inherits="OptionsButtonTemplate" text="Taille">
+    <Button name="TCh_Modify_Taille" inherits="OptionsButtonTemplate" text="Scale">
     <Size>
       <AbsDimension x="40" y="20"/>
     </Size>
@@ -887,7 +886,7 @@
     <Anchors>
       <Anchor point="TOPLEFT" relativeTo="TCh_GMList" relativePoint="BOTTOMLEFT">
         <Offset>
-          <AbsDimension x="30" y="-20" />
+          <AbsDimension x="20" y="-20" />
         </Offset>
       </Anchor>
     </Anchors>
@@ -956,9 +955,9 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_Infos" inherits="OptionsButtonTemplate" text="Info">
+    <Button name="TCh_Infos" inherits="OptionsButtonTemplate" text="Server Info">
     <Size>
-      <AbsDimension x="60" y="20"/>
+      <AbsDimension x="90" y="20"/>
     </Size>
     <Anchors>
       <Anchor point="LEFT" relativeTo="TCh_GPS" relativePoint="RIGHT">
@@ -975,7 +974,7 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_InfosCible" inherits="OptionsButtonTemplate" text="Info cible">
+    <Button name="TCh_InfosCible" inherits="OptionsButtonTemplate" text="UnitInfo">
     <Size>
       <AbsDimension x="60" y="20"/>
     </Size>
@@ -994,26 +993,26 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_Soleil" inherits="OptionsButtonTemplate" text="Soleil">
+    <Button name="TCh_Soleil" inherits="OptionsButtonTemplate" text="Rain">
     <Size>
       <AbsDimension x="60" y="20"/>
     </Size>
     <Anchors>
       <Anchor point="TOPLEFT" relativeTo="TCh_GPS" relativePoint="BOTTOMLEFT">
         <Offset>
-          <AbsDimension x="-30" y="-20" />
+          <AbsDimension x="15" y="-20" />
         </Offset>
       </Anchor>
     </Anchors>
     <Scripts>
-      <OnClick>TCh_Msg(TCh_msg["soleil"]);TCh_Dire(TCH_SOLEIL);</OnClick>
-      <OnEnter>TCh_Tooltip(TCh_bul["soleil"]);</OnEnter>
+      <OnClick>TCh_Infoscible();</OnClick>
+      <OnEnter>TCh_Tooltip(TCh_bul["infoscible"]);</OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_CielGris" inherits="OptionsButtonTemplate" text="Ciel gris">
+    <Button name="TCh_CielGris" inherits="OptionsButtonTemplate" text="Snow">
     <Size>
       <AbsDimension x="60" y="20"/>
     </Size>
@@ -1032,7 +1031,7 @@
     </Button>
     <!-- ############################################### -->
     <!-- GM Boutton -->
-    <Button name="TCh_Pluie" inherits="OptionsButtonTemplate" text="Pluie">
+    <Button name="TCh_Pluie" inherits="OptionsButtonTemplate" text="Sand">
     <Size>
       <AbsDimension x="60" y="20"/>
     </Size>
@@ -1046,25 +1045,6 @@
     <Scripts>
       <OnClick>TCh_Msg(TCh_msg["pluie"]);TCh_Dire(TCH_PLUIE);</OnClick>
       <OnEnter>TCh_Tooltip(TCh_bul["pluie"]);</OnEnter>
-      <OnLeave>GameTooltip:Hide()</OnLeave>
-    </Scripts>
-    </Button>
-    <!-- ############################################### -->
-    <!-- GM Button -->
-    <Button name="TCh_Neige" inherits="OptionsButtonTemplate" text="Neige">
-    <Size>
-      <AbsDimension x="60" y="20"/>
-    </Size>
-    <Anchors>
-      <Anchor point="LEFT" relativeTo="TCh_Pluie" relativePoint="RIGHT">
-        <Offset>
-          <AbsDimension x="5" y="0" />
-        </Offset>
-      </Anchor>
-    </Anchors>
-    <Scripts>
-      <OnClick>TCh_Msg(TCh_msg["neige"]);TCh_Dire(TCH_NEIGE);</OnClick>
-      <OnEnter>TCh_Tooltip(TCh_bul["neige"]);</OnEnter>
       <OnLeave>GameTooltip:Hide()</OnLeave>
     </Scripts>
     </Button>
@@ -1291,7 +1271,7 @@
   <!-- Frame OnLoad -->
   <Scripts>
     <OnLoad>TCh_OnLoad();tinsert(UISpecialFrames,this:GetName());</OnLoad>
-    <OnEnter>TCh_Tooltip("Cette page rassemble les principales commandes de GM"); </OnEnter>
+    <OnEnter>TCh_Tooltip("GM tools page."); </OnEnter>
     <OnLeave>GameTooltip:Hide()</OnLeave>
   </Scripts>
   </Frame>

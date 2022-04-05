@@ -1,17 +1,17 @@
 --############################################################################################
 -- [InstableDesign] http://instabledesign.pbwiki.com/
 --
---	Titre			: Thegm Cheat
---	Fichier			: TCh_commandes.lua
+--	Title			: TheGM - Cheat
+--	File			: TCh_commandes.lua
 --	Version			: 2.4
 --	Description		: Addon 
---	Requis			: World Of Warcraft + emulateur Mangos 2.4
---	Auteur			: InstableDesign chez gmail.com
+--	Required		: World Of Warcraft + MANGOS Emulator 2.4
+--	Author			: InstableDesign@gmail.com
 --	Site			: http://instabledesign.pbwiki.com/
 --
---	This file contains the GM commands from the cheat page.
+--	This file contains the GM commands for the cheat page.
 --
---	YOU CAN EDIT THIS PAGE
+--	YOU CAN EDIT THIS FILE
 --
 -- [InstableDesign] http://instabledesign.pbwiki.com/
 --############################################################################################
@@ -64,10 +64,12 @@ TCH_INFOS = ".server info";
 TCH_PINFO = ".pinfo";
 TCH_NPCINFO = ".npc info";
 
-TCH_SOLEIL = ".wchange 1 0";
-TCH_PLUIE = ".wchange 1 1";
-TCH_NEIGE = ".wchange 2 1";
+TCH_SOLEIL = ".wchange 1 1";
+TCH_SOLEIL_OFF = ".wchange 1 0";
+TCH_PLUIE = ".wchange 2 1";
+TCH_PLUIE_OFF = ".wchange 2 0";
 TCH_GRIS = ".wchange 3 1";
+TCH_GRIS_OFF = ".wchange 3 0";
 
 TCH_ANNOUNCE = ".announce";
 TCH_NOTIFY = ".notify";
@@ -84,7 +86,11 @@ TCh_bul = {
     ["orp"] = "|cffffffffLeft Click :|r Click here to add the amount of gold indicated.";
     ["orm"] = "|cffffffffLeft Click :|r Click here to subtract the amount of gold indicated.";
     ["dire"] = "|cffffffffLeft Click :|r Make an NPC say something.\n|cffffffffRight Click :|r Make an NPC yell something.";
-    ["modify"] = "|cffffffffLeft Click :|r Cliquez ici pour changer la valeur maxi ";
+    ["modify"] = "|cffffffffLeft Click :|r Modify the BLANK of the selected player.";
+    ["modifyhp"] = "|cffffffffLeft Click :|r Modify the HP of the selected player.";
+    ["modifymana"] = "|cffffffffLeft Click :|r Modify the mana of the selected player.";
+    ["modifyrage"] = "|cffffffffLeft Click :|r Modify the rage of the selected player.";
+    ["modifyenergy"] = "|cffffffffLeft Click :|r Modify the energy of the selected player.";
     ["modifylvl"] = "|cffffffffLeft Click :|r Increase the level of a player by a set amount.\n|cffffffffRight Click :|r Decrease the level of a player by a set amount.";
     ["modifyhonneur"] = "|cffffffffLeft Click :|r Add a set amount of honor points to the selected player.\n|cffffffffRight Click :|r Remove a set amount of honor points from the selected player.";
     ["modifyscale"] = "|cffffffffLeft Click :|r Modify the scale of your currently selected target.\n|cffffffffRight Click :|r Revert your currently selected target to normal scale.";
@@ -104,14 +110,13 @@ TCh_bul = {
     ["kick"] = "|cffffffffLeft Click :|r Kick the targeted player from the world.";
     ["acct"] = "Display current account level.";
 
-    ["gps"] = "Display the current position information.";
-    ["infos"] = "Display server version and the number of connected players.";
-    ["infoscible"] = "Output account information for selected player.";
+    ["gps"] = "|cffffffffLeft Click :|r Display the current position information.";
+    ["infos"] = "|cffffffffLeft Click :|r Display server version and the number of connected players.";
+    ["infoscible"] = "|cffffffffLeft Click :|r Display account information for selected player/target.";
 
-    ["soleil"] = "Cliquez pour mettre du soleil dans cette zone";
-    ["cielgris"] = "Cliquez pour mettre un ciel gris dans cette zone";
-    ["pluie"] = "Cliquez pour mettre de la pluie dans cette zone";
-    ["neige"] = "Cliquez pour mettre de la neige dans cette zone";
+    ["soleil"] = "|cffffffffLeft Click :|r Make the weather rainy for this zone.\n|cffffffffRight Click :|r Turn off the rain for this zone.";
+    ["cielgris"] = "|cffffffffLeft Click :|r Make the weather snowy for this zone.\n|cffffffffRight Click :|r Turn off the snow for this zone.";
+    ["pluie"] = "|cffffffffLeft Click :|r Make the weather sandy for this zone.\n|cffffffffRight Click :|r Turn off the sand for this zone.";
 
     ["annonce"] = "|cffffffffLeft Click :|r Send a system message to all players online in chat log.\n|cffffffffRight Click :|r Pour faire une annonce serveur avec votre nom\n|cffffffffCtrl + Left Click :|r Pour notifier\n|cffffffffCtrl + Right Click :|r Pour notifier avec votre nom";
 
@@ -167,15 +172,12 @@ TCh_msg = {
     ["infosp"] = "Voici les information sur le joueur |cff00ff00";
     ["infosnpc"] = "Voici les information sur la creature |cff00ff00";
 
-    ["soleil"] = "Vous mettez du soleil dans cette zone";
-    ["cielgris"] = "Vous mettez un ciel gris dans cette zone";
-    ["pluie"] = "Vous mettez de la pluie dans cette zone";
-    ["neige"] = "Vous mettez de la neige dans cette zone";
+    ["soleil"] = "|cffffffffLeft Click :|r Make the weather rainy for this zone.\n|cffffffffRight Click :|r Turn off the rain for this zone.";
+    ["cielgris"] = "|cffffffffLeft Click :|r Make the weather snowy for this zone.\n|cffffffffRight Click :|r Turn off the snow for this zone.";
+    ["pluie"] = "|cffffffffLeft Click :|r Make the weather sandy for this zone.\n|cffffffffRight Click :|r Turn off the sand for this zone.";
 
     ["annonce"] = "Vous faite une annonce serveur";
-    ["annoncenom"] = "Vous faite une annonce serveur en affichant votre nom";
-    ["notify"] = "Vous faite une notification serveur";
-    ["notifynom"] = "Vous faite une notification serveur en affichant votre nom";
+    ["notify"] = "Send a global message to all players online in screen.";
 }
 
 --############################################################################################

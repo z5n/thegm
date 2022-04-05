@@ -1,17 +1,17 @@
 --############################################################################################
 -- [InstableDesign] http://instabledesign.pbwiki.com/
 --
---	Titre			: Thegm Cheat
---	Fichier			: Ch_Functions.lua
+--	Title			: TheGM - Cheat
+--	File			: TCh_Functions.lua
 --	Version			: 2.4
 --	Description		: Addon 
---	Requis			: World Of Warcraft + emulateur Mangos 2.4
---	Auteur			: InstableDesign chez gmail.com
+--	Required		: World Of Warcraft + MANGOS Emulator 2.4
+--	Author			: InstableDesign@gmail.com
 --	Site			: http://instabledesign.pbwiki.com/
 --
---	Ce fichier contient les Functions de la page cheat
+--	This file contains the functions for the cheat page.
 --
---	NE PAS MODIFIER CE FICHIER
+--	YOU CAN EDIT THIS FILE
 --
 -- [InstableDesign] http://instabledesign.pbwiki.com/
 --############################################################################################
@@ -63,7 +63,7 @@ end
 
 function TCh_Tooltip(TCh_Corp)
 	GameTooltip:SetOwner(this, "ANCHOR_TOP");
-	GameTooltip:SetText(TCh_Name .. " |cff666666By " .. TCh_By .. "|r\n\n" .. TCh_Corp);
+	GameTooltip:SetText(TCh_Name .. " |cff666666By: " .. TCh_By .. "|r\n\n" .. TCh_Corp);
 end
 
 ----------------------------------------------------------------------------------------------
@@ -333,13 +333,13 @@ function TCh_Annoncer()
 			end
 		else
 		-- Function annonce
-			if ( arg1 == "LeftButton" ) then
+			if ( arg1 == "RightButton" ) then
 				TCh_Msg(TCh_msg["annonce"]);
 				TCh_Dire(TCH_ANNOUNCE .. " " .. TCh_Annonce:GetText());
 		-- Function annonce avec affichage du nom
 			else
-				TCh_Msg(TCh_msg["annoncenom"]);
-				TCh_Dire(TCH_ANNOUNCE .. " " .. TCh_Annonce:GetText().. " <MJ>" .. UnitName("player"));
+				TCh_Msg(TCh_msg["notify"]);
+				TCh_Dire(TCH_NOTIFY .. " " .. TCh_Annonce:GetText());
 			end
 		end
 	end
