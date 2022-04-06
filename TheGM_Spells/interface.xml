@@ -1,0 +1,709 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+  <Script file="functions.lua" />
+  <Script file="commands.lua" />
+  <Script file="spells\spells.lua" />
+  <!-- ################################################################################################### -->
+  <!-- Template Scrollbar boutton -->
+  <Button name="TC_ScrollBar_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="285" y="16" />
+  </Size>
+  <NormalFont inherits="GameFontHighlight" justifyH="LEFT"/>
+  <Color r="1" g="0" b="0"/>
+  <Scripts>
+    <OnLeave>GameTooltip:Hide()</OnLeave>
+  </Scripts>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- Template Icone -->
+  <Button name="TC_Btn_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="30" y="30"/>
+  </Size>
+  <Layers>
+  <!-- ############################################### -->
+  <!-- Layer Border -->
+  <Layer level="BACKGROUND">
+    <Texture name="$parentTexture" file="interface\lfgframe\lfgicon-zone">
+      <Size>
+        <AbsDimension x="30" y="30"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP"/>
+      </Anchors>
+      <TexCoords left="0" right="0.8" top="0" bottom="0.73"/>
+    </Texture>
+    </Layer></Layers>
+  <NormalTexture/>
+  <!-- ############################################### -->
+  <!-- Highlight Texture -->
+  <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="30" y="30"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="$parentTexture"/>
+    </Anchors>
+  </HighlightTexture>
+    <Scripts>
+      <OnLeave>GameTooltip:Hide();</OnLeave>
+    </Scripts>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- Template Onglet -->
+  <Button name="TC_Onglet_Tpl" virtual="true">
+  <Size>
+    <AbsDimension x="20" y="20"/>
+  </Size>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <Texture file="Interface\SpellBook\SpellBook-SkillLineTab">
+      <Size>
+        <AbsDimension x="42" y="42"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="-2" y="8"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Border -->
+    <Layer level="BORDER">
+    <Texture name="$parentTexture" file="Interface\Glues\CharacterCreate\UI-CharacterCreate-Classes">
+      <Size>
+        <AbsDimension x="20" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="LEFT">
+          <Offset>
+            <AbsDimension x="0" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.25" top="0" bottom="0.25"/>
+    </Texture>
+    </Layer></Layers>
+  <NormalTexture/>
+  <!-- ############################################### -->
+  <!-- Highlight Texture -->
+  <HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD">
+    <Size>
+      <AbsDimension x="20" y="20"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP" relativeTo="$parentTexture">
+        <Offset>
+          <AbsDimension x="0" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+  </HighlightTexture>
+  </Button>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <Frame name="TC_Btn" toplevel="false" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="false" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="30" y="30"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT" relativeTo="UIParent" relativePoint="TOPLEFT">
+      <Offset>
+        <AbsDimension x="105" y="-65" />
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Icone -->
+    <Texture file="interface\minimap\tooltipbackdrop-background">
+      <Size>
+        <AbsDimension x="20" y="20"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="-1" y="0"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Arriere plan Haut Gauche -->
+    <Texture file="interface\minimap\minimap-trackingborder">
+      <Size>
+        <AbsDimension x="40" y="40"/>
+      </Size>
+      <Anchors>
+        <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+          <Offset>
+            <AbsDimension x="4" y="-5"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <TexCoords left="0" right="0.75" top="0" bottom="0.75"/>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ################################################################################################### -->
+    <!-- Btn ouvrir la page Sorts -->
+    <Button name="TC_Open" inherits="OptionsButtonTemplate">
+    <Size>
+      <AbsDimension x="20" y="20" />
+    </Size>
+    <Anchors>
+      <Anchor point="CENTER" relativeTo="$parent" relativePoint="CENTER">
+        <Offset>
+          <AbsDimension x="0" y="0" />
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <NormalTexture file="interface\gossipframe\bindergossipicon"/>
+    <PushedTexture file="interface\gossipframe\bindergossipicon">
+      <Anchors>
+        <Anchor point="center">
+          <Offset>
+            <AbsDimension x="-2" y="-2"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </PushedTexture>
+    <HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+    <Scripts>
+      <OnClick>TC_OnShow()</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["ouvrir"]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+  </Frames>
+  </Frame>
+  <!-- ################################################################################################### -->
+  <!-- ################################################################################################### -->
+  <!-- Frame Competences -->
+  <Frame name="TC" toplevel="true" frameStrata="PARENT" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+  <TitleRegion setAllPoints="true"/>
+  <Size>
+    <AbsDimension x="384" y="512"/>
+  </Size>
+  <Anchors>
+    <Anchor point="TOPLEFT">
+      <Offset>
+        <AbsDimension x="0" y="-104"/>
+      </Offset>
+    </Anchor>
+  </Anchors>
+  <HitRectInsets>
+    <AbsInset left="0" right="30" top="0" bottom="45"/>
+  </HitRectInsets>
+  <Layers>
+    <!-- ############################################### -->
+    <!-- Layer Background -->
+    <Layer level="BACKGROUND">
+    <!-- Icone -->
+    <Texture file="interface\icons\inv_gizmo_02">
+      <Size>
+        <AbsDimension x="58" y="58"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="13" y="-9"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer>
+    <!-- ############################################### -->
+    <!-- Layer Artwork -->
+    <Layer level="ARTWORK">
+    <!-- Titre de la fenetre -->
+    <FontString inherits="GameFontNormal" text="[ Thegm ] Competences">
+      <Size>
+        <AbsDimension x="384" y="12"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOP" relativeTo="TC" relativePoint="TOP">
+          <Offset>
+            <AbsDimension x="0" y="-18" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Color r="1.0" g="1.0" b="1.0"/>
+    </FontString>
+    <!-- Arriere plan Haut Gauche -->
+    <Texture file="Interface\Spellbook\UI-SpellbookPanel-TopLeft">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Haut Droite -->
+    <Texture file="Interface\Spellbook\UI-SpellbookPanel-TopRight">
+      <Size>
+        <AbsDimension x="128" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPRIGHT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas Gauche -->
+    <Texture file="Interface\Spellbook\UI-SpellbookPanel-BotLeft">
+      <Size>
+        <AbsDimension x="256" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOMLEFT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    <!-- Arriere plan Bas Droite -->
+    <Texture file="Interface\Spellbook\UI-SpellbookPanel-BotRight">
+      <Size>
+        <AbsDimension x="128" y="256"/>
+      </Size>
+      <Anchors>
+        <Anchor point="BOTTOMRIGHT">
+          <Offset>
+            <AbsDimension x="2" y="-1"/>
+          </Offset>
+        </Anchor>
+      </Anchors>
+    </Texture>
+    </Layer></Layers>
+  <Frames>
+    <!-- ################################################################################################### -->
+    <!-- BTN Competence Armes -->
+    <Button name="TC_BtnArmes" inherits="TC_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="80" y="-40"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Armes);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Armes");</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN Competence Armures -->
+    <Button name="TC_BtnArmures" inherits="TC_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_BtnArmes" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Armures);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Armures");</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN Competence Montures -->
+    <Button name="TC_BtnMontures" inherits="TC_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_BtnArmures" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Montures);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Montures");</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ################################################################################################### -->
+    <!-- BTN Competence Armures -->
+    <Button name="TC_BtnLangues" inherits="TC_Btn_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_BtnMontures" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="5" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Langues);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Langues");</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Scrollbar competences -->
+    <ScrollFrame name="TC_ScrollBar" inherits="FauxScrollFrameTemplate">
+      <Size>
+        <AbsDimension x="300" y="100"/>
+      </Size>
+      <Anchors>
+        <Anchor point="TOPLEFT" relativeTo="TC" relativePoint="TOPLEFT">
+          <Offset>
+            <AbsDimension x="20" y="-80" />
+          </Offset>
+        </Anchor>
+      </Anchors>
+      <Scripts>
+        <OnVerticalScroll>FauxScrollFrame_OnVerticalScroll(15, TC_ScrollBar_Update);</OnVerticalScroll>
+        <OnShow>TC_ScrollBar_Update();</OnShow>
+      </Scripts>
+    </ScrollFrame>
+    <!-- ######################### -->
+    <!-- boutton 1 -->
+    <Button name="TC_ScrollBar1" inherits="TC_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_ScrollBar" relativePoint="TOPLEFT">
+        <Offset>
+          <AbsDimension x="8" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TC_Learn(TC_ScrollBar_Value_1);</OnMouseDown>
+      <OnEnter>TC_Tooltip(TC_bul["item"] .. "ID:" .. TC_ScrollBar_Value_1[1] .. " Skill:" .. TC_ScrollBar_Value_1[2] .. " Maxi:" .. TC_ScrollBar_Value_1[3]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- boutton 2 -->
+    <Button name="TC_ScrollBar2" inherits="TC_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_ScrollBar1" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TC_Learn(TC_ScrollBar_Value_2);</OnMouseDown>
+      <OnEnter>TC_Tooltip(TC_bul["item"] .. "ID:" .. TC_ScrollBar_Value_2[1] .. " Skill:" .. TC_ScrollBar_Value_2[2] .. " Maxi:" .. TC_ScrollBar_Value_2[3]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- boutton 3 -->
+    <Button name="TC_ScrollBar3" inherits="TC_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_ScrollBar2" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TC_Learn(TC_ScrollBar_Value_3);</OnMouseDown>
+      <OnEnter>TC_Tooltip(TC_bul["item"] .. "ID:" .. TC_ScrollBar_Value_3[1] .. " Skill:" .. TC_ScrollBar_Value_3[2] .. " Maxi:" .. TC_ScrollBar_Value_3[3]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- boutton 4 -->
+    <Button name="TC_ScrollBar4" inherits="TC_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_ScrollBar3" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TC_Learn(TC_ScrollBar_Value_4);</OnMouseDown>
+      <OnEnter>TC_Tooltip(TC_bul["item"] .. "ID:" .. TC_ScrollBar_Value_4[1] .. " Skill:" .. TC_ScrollBar_Value_4[2] .. " Maxi:" .. TC_ScrollBar_Value_4[3]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- boutton 5 -->
+    <Button name="TC_ScrollBar5" inherits="TC_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_ScrollBar4" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TC_Learn(TC_ScrollBar_Value_5);</OnMouseDown>
+      <OnEnter>TC_Tooltip(TC_bul["item"] .. "ID:" .. TC_ScrollBar_Value_5[1] .. " Skill:" .. TC_ScrollBar_Value_5[2] .. " Maxi:" .. TC_ScrollBar_Value_5[3]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- boutton 6 -->
+    <Button name="TC_ScrollBar6" inherits="TC_ScrollBar_Tpl">
+    <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="TC_ScrollBar5" relativePoint="BOTTOMLEFT"/>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TC_Learn(TC_ScrollBar_Value_6);</OnMouseDown>
+      <OnEnter>TC_Tooltip(TC_bul["item"] .. "ID:" .. TC_ScrollBar_Value_6[1] .. " Skill:" .. TC_ScrollBar_Value_6[2] .. " Maxi:" .. TC_ScrollBar_Value_6[3]);</OnEnter>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Onglet class 1 -->
+    <Button name="TC_Macro1" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TC" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-9" y="-20"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Skinning);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Skinning"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 2 -->
+    <Button name="TC_Macro2" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro1" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Herbalism);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Herbalism"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 3 -->
+    <Button name="TC_Macro3" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro2" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Mining);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Mining"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 4 -->
+    <Button name="TC_Macro4" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro3" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Alchemy);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Alchemy"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 5 -->
+    <Button name="TC_Macro5" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro4" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Tailoring);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Tailoring"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 6 -->
+    <Button name="TC_Macro6" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro5" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Blacksmithing);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Blacksmithing"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 7 -->
+    <Button name="TC_Macro7" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro6" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Engineering);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Engineering"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 8 -->
+    <Button name="TC_Macro8" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro7" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Jewelcrafting);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Jewelcrafting"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 9 -->
+    <Button name="TC_Macro9" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro8" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Leatherworking);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Leatherworking"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 10 -->
+    <Button name="TC_Macro10" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro9" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Enchanting);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Enchanting"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 11 -->
+    <Button name="TC_Macro11" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro10" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Fishing);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Fishing"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 12 -->
+    <Button name="TC_Macro12" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro11" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Cooking);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "Cooking"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 13 -->
+    <Button name="TC_Macro13" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro12" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_firstAid);</OnClick>
+      <OnEnter>TC_Tooltip(TC_bul["class"] .. "firstAid"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 14 -->
+    <Button name="TC_Macro14" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro13" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnMouseDown>TC_Learn({TC_Poison[2],TC_Poison[3],TC_Poison[4]}); </OnMouseDown>
+      <OnEnter>TC_Tooltip("Poison |cffff0000Uniquement les voleur!!!|r\n\n" .. TC_bul["item"] .. "ID:" .. TC_Poison[2] .. " Skill:" .. TC_Poison[3] .. " Maxi:" .. TC_Poison[4]); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ######################### -->
+    <!-- Onglet class 15 -->
+    <Button name="TC_Macro15" inherits="TC_Onglet_Tpl">
+    <Anchors>
+      <Anchor point="TOP" relativeTo="TC_Macro14" relativePoint="BOTTOM">
+        <Offset>
+          <AbsDimension x="0" y="-8"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Scripts>
+      <OnClick>TC_ScrollBar_Change(TC_Lockpicking);TC_Msg("|cffff0000Attention pas Functionel!!!");</OnClick>
+      <OnEnter>TC_Tooltip("Pas encore implementer je n'arrive pas a apprendre la comp associer a Lockpicking (meme en fufu)"); </OnEnter>
+      <OnLeave>GameTooltip:Hide()</OnLeave>
+    </Scripts>
+    </Button>
+    <!-- ############################################### -->
+    <!-- Boutton Close -->
+    <Button name="FenetreCloseButton" inherits="UIPanelCloseButton">
+    <Anchors>
+      <Anchor point="TOPRIGHT" relativeTo="TC" relativePoint="TOPRIGHT">
+        <Offset>
+          <AbsDimension x="-26" y="-10"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    </Button>
+  </Frames>
+  <!-- ################################################################################################### -->
+  <!-- Frame Script -->
+  <Scripts>
+    <OnLoad> TC_OnLoad();
+      TC_ScrollBar_OnLoad();
+      tinsert(UISpecialFrames,this:GetName());
+	  </OnLoad>
+    <OnEnter>TC_Tooltip(TC_bul["desc"]);</OnEnter>
+    <OnLeave>GameTooltip:Hide()</OnLeave>
+  </Scripts>
+  </Frame>
+</Ui>

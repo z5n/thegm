@@ -1,0 +1,6 @@
+## Interface: 40200
+## Title: |cffef7801[TheGM]|r Spells
+## Author: Instable Design
+## Version: 2.4
+## Notes: Spellbook addon for GMs. |c33333333By: Instable Design|r
+interface.xml
